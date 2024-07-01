@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/07/01 15:25:32 by david            ###   ########.fr       */
+/*   Created: 2023/04/13 11:50:07 by davda-si          #+#    #+#             */
+/*   Updated: 2023/04/13 13:55:59 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	if (ac == 2)
+	if (c >= '0' && c <= '9')
 	{
-		//parsing of the file, then of the map
-		//run game with all the calculus
+		return (1);
 	}
-	else
-		ft_printf("Wrong number of arguments, try again\n");
+	return (0);
 }

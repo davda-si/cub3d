@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/07/01 15:25:32 by david            ###   ########.fr       */
+/*   Created: 2023/04/20 12:08:01 by davda-si          #+#    #+#             */
+/*   Updated: 2023/05/11 12:30:31 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (ac == 2)
+	int	i;
+
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		//parsing of the file, then of the map
-		//run game with all the calculus
+		if ((char)s[i] == (char)c)
+			return (&((char *)s)[i]);
+		i--;
 	}
-	else
-		ft_printf("Wrong number of arguments, try again\n");
+	return (NULL);
 }

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/07/01 15:25:32 by david            ###   ########.fr       */
+/*   Created: 2023/05/11 12:11:09 by davda-si          #+#    #+#             */
+/*   Updated: 2023/05/11 12:16:25 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+t_list	*ft_lstnew(void *content)
 {
-	if (ac == 2)
-	{
-		//parsing of the file, then of the map
-		//run game with all the calculus
-	}
-	else
-		ft_printf("Wrong number of arguments, try again\n");
+	t_list	*node;
+
+	node = malloc(sizeof(*node));
+	if (!node)
+		return (NULL);
+	node->next = NULL;
+	node->content = content;
+	return (node);
 }
