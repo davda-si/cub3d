@@ -1,7 +1,9 @@
 NAME = cub3d
 
 SRC_DIR = src
-SRC = $(SRC_DIR)/main.c $(SRC_DIR)/error.c
+SRC = $(SRC_DIR)/main.c \
+	  $(SRC_DIR)/hehe.c \
+	  $(SRC_DIR)/calculations.c $(SRC_DIR)/error.c
 
 CC = @cc
 CFLAGS = -Wall -Wextra -Werror
