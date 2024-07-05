@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/07/04 22:45:02 by david            ###   ########.fr       */
+/*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
+/*   Updated: 2024/07/04 22:47:07 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
-# include "libft/libft.h"
-# include "mlx_linux/mlx.h"
+#include "../inc/cub.h"
 
-void	error_handle(int err);
-
-#endif
+void	error_handle(int err)
+{
+	if (err == 0)
+	{
+		ft_printf("Incorrect number of arguments\n");
+		exit (1);
+	}
+}

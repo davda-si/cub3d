@@ -1,9 +1,9 @@
 NAME = cub3d
 
 SRC_DIR = src
-SRC = $(SRC_DIR)/main.c
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/error.c
 
-CC = @c
+CC = @cc
 CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -L. -lXext -L. -lX11
@@ -23,7 +23,7 @@ all: $(NAME)
 	@echo "*-----------------*"
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
 
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)
