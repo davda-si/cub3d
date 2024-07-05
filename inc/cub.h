@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/07/05 13:23:05 by david            ###   ########.fr       */
+/*   Updated: 2024/07/05 13:24:59 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ typedef struct s_data
 void calculus(char **map);
 t_data	*data(void);
 t_mapdata	*mapdata(void);
+void		error_handle(int err);
 
 #endif
