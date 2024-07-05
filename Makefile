@@ -1,9 +1,11 @@
 NAME = cub3d
 
 SRC_DIR = src
-SRC = $(SRC_DIR)/main.c
+SRC = $(SRC_DIR)/main.c \
+	  $(SRC_DIR)/hehe.c \
+	  $(SRC_DIR)/calculations.c
 
-CC = @c
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -L. -lXext -L. -lX11
