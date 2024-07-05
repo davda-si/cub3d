@@ -46,6 +46,7 @@ clean:
 	
 fclean: clean
 	@rm -f $(NAME)
+	@make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 

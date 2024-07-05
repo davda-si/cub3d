@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+         #
+#    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 16:59:28 by davda-si          #+#    #+#              #
-#    Updated: 2023/09/11 18:45:20 by davda-si         ###   ########.fr        #
+#    Updated: 2024/07/05 13:19:03 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,23 +29,23 @@ ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJ_B = ${SRC_B:.c=.o}
 
-CC = gcc
+CC = @cc
 
 CCFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-		ar -crs $(NAME) $(OBJ)
+		@ar -crs $(NAME) $(OBJ)
 
 bonus: $(OBJ) $(OBJ_B)
-	ar -crs $(NAME) $(OBJ) $(OBJ_B)
+	@ar -crs $(NAME) $(OBJ) $(OBJ_B)
 
 clean:
-	rm -f $(OBJ) $(OBJ_B)
+	@rm -f $(OBJ) $(OBJ_B)
 
 fclean:		clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re:		fclean all
 
