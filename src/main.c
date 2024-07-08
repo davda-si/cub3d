@@ -14,22 +14,20 @@
 
 int main(int ac, char **av)
 {
-	t_data	game;
+	t_data	*game;
 
 	if (ac != 2)
-		error_handle(0);
+		error_handle(0, "wrong number of arguments\n", &game);
 	if (ft_strnstr(av[1] + ft_strlen(av[1]) - 4,
 		".cub", ft_strlen(av[1])) == NULL)
-		error_handle(1);
+		error_handle(0, "wrong file name\n", &game);
 	ft_memset(&game, 0, sizeof(t_data));
-	check_file(av[1], &game);
-	return (0);
+	game = data();
 	if (ac == 2)
 	{
-		//parsing of the file, then of the map
+		check_file(av[1], &game);
 		calculus(/*map*/NULL);
 		//run game with all the calculus
 	}
-	else
-		ft_printf("Wrong number of arguments, try again\n");
+	return (0);
 }

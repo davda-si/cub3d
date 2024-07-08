@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: guest <guest@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/07/05 13:24:59 by david            ###   ########.fr       */
+/*   Updated: 2024/07/08 17:39:08 by guest            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,17 @@ typedef struct s_data
     double      oldTime;
 }				t_data;
 
-void calculus(char **map);
-t_data	*data(void);
+//general
+t_data	    *data(void);
 t_mapdata	*mapdata(void);
-void		error_handle(int err);
+void		error_handle(int err, char *msg, t_data *game);
+int			ft_strcmp(char *str1, char *str2);
+
+//parsing
+void	check_file(char *file, t_data *game);
+int     check_line(char **file);
+
+//raytracing
+void    calculus(char **map);
 
 #endif

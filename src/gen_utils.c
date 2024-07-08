@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   gen_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: guest <guest@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/07/04 22:47:07 by david            ###   ########.fr       */
+/*   Created: 2024/07/08 17:32:38 by guest             #+#    #+#             */
+/*   Updated: 2024/07/08 17:38:57 by guest            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-void	error_handle(int err, char *msg, t_data *game)
+int	ft_strcmp(char *str1, char *str2)
 {
-	if (err == 0)
-	{
-		ft_printf(msg);
-		exit (1);
-	}
-	else if (err == 1)
-	{
-		free_stuff(game);
-		ft_printf(msg);
-		exit (1);
-	}
+	int	i;
+
+	i = 0;
+	if (!str1 || !str2)
+		return (0);
+	while (str1[i] && str2[i] && str1[i] == str2[i])
+		i++;
+	return (str1[i] - str2[i]);
 }
