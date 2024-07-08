@@ -15,6 +15,12 @@
 
 #include "./libft/libft.h"
 #include "./mlx_linux/mlx.h"
+#include <math.h>
+
+#define RESW 1080
+#define RESH 720
+
+#define MULTIPLIER 64
 
 typedef struct s_mapdata
 {
@@ -38,6 +44,11 @@ typedef struct s_data
     double      planeY;
     double      time;
     double      oldTime;
+    double      cameraX;
+    double      rayDirX;
+    double      rayDirY;
+    double      deltaDistX;
+    double      deltaDistY;
 }				t_data;
 
 void calculus(char **map);
