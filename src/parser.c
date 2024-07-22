@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guest <guest@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/07/08 17:27:13 by guest            ###   ########.fr       */
+/*   Updated: 2024/07/22 04:18:26 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+static void	check_map(char **line, int fd, t_data *game)
+{
+	int flag;
+
+	flag = 0;
+	if (check_chr(*line))
+		flag = 1;
+	// after, add the line to the map, get a new line, more height and if flag is 1 free stuff and we good to go
+	
+}
 
 static void read_file(int fd, t_data *game)
 {
@@ -20,15 +31,18 @@ static void read_file(int fd, t_data *game)
 
 	flag = 0;
 	line = get_next_line(fd);
-	while(!flag && line)
+	while(line)
 	{
 		split = ft_split(line, " ");
 		if (check_line(split))
+			check_map(&line, fd, game);
+		else
 		{
-			free(line);
-			freesplit(split);
-			error_handle(1, "Not a valid texture.\n", game);
+			flag++;
+			add_txture();
 		}
+		if (flag < 6 && line == NULL)
+			free_stuff();
 	}
 }
 
