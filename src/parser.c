@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/07/31 04:33:00 by david            ###   ########.fr       */
+/*   Updated: 2024/07/31 04:39:20 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	check_map(char **line, int fd, t_data *game)
 	
 }
 
-static void read_file(int fd, t_data *game)
+static char	**read_file(int fd, t_data *game)
 {
 	char	*line;
 	char	*tmp;
@@ -51,7 +51,8 @@ static void read_file(int fd, t_data *game)
 
 void	check_file(char *file, t_data *game)
 {
-	int	fd;
+	int		fd;
+	char	**file;
 
 	if ((fd = open(file, __O_DIRECTORY)) != -1)
 	{
@@ -64,5 +65,5 @@ void	check_file(char *file, t_data *game)
 		error_handle(1, "can't open file\n", game);
 	}
 	fd = open(file, O_RDONLY);
-	read_file(fd, game);
+	file = read_file(fd, game);
 }
