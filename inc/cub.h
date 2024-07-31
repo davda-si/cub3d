@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guest <guest@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/07/08 17:39:08 by guest            ###   ########.fr       */
+/*   Updated: 2024/07/29 20:15:55 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,18 @@ typedef struct s_data
 }				t_data;
 
 //general
-t_data	    *data(void);
+t_data		*data(void);
 t_mapdata	*mapdata(void);
 void		error_handle(int err, char *msg, t_data *game);
 int			ft_strcmp(char *str1, char *str2);
 
 //parsing
 void	check_file(char *file, t_data *game);
-int     check_line(char **file);
+int		check_line(char **file);
+int		check_str(char *str);
+void	mapline_add(t_data *game, char *line);
 
 //raytracing
-void    calculus(char **map);
+void	calculus(char **map);
 
 #endif

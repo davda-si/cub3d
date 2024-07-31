@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/07/22 04:18:26 by david            ###   ########.fr       */
+/*   Updated: 2024/07/31 04:33:00 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static void	check_map(char **line, int fd, t_data *game)
 	int flag;
 
 	flag = 0;
-	if (check_chr(*line))
+	if (check_str(*line))
 		flag = 1;
+	game->map->map = maplines_add(game, *line);
 	// after, add the line to the map, get a new line, more height and if flag is 1 free stuff and we good to go
 	
 }
@@ -26,24 +27,26 @@ static void	check_map(char **line, int fd, t_data *game)
 static void read_file(int fd, t_data *game)
 {
 	char	*line;
-	char	**split;
-	int		flag;
+	char	*tmp;
+	char	*tmp2;
+	char	**file;
 
-	flag = 0;
+	file = NULL;
 	line = get_next_line(fd);
-	while(line)
+	while(1)
 	{
-		split = ft_split(line, " ");
-		if (check_line(split))
-			check_map(&line, fd, game);
-		else
-		{
-			flag++;
-			add_txture();
-		}
-		if (flag < 6 && line == NULL)
-			free_stuff();
+		tmp = get_next_line(fd);
+		if (!tmp)
+			break ;
+		tmp2 = ft_strjoin(line, tmp);
+		free(line);
+		free(tmp);
+		line = tmp2;
+		free(tmp2);
 	}
+	file = ft_split(line, '\n');
+	free(line);
+	return (file);
 }
 
 void	check_file(char *file, t_data *game)
