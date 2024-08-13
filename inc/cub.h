@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/07/29 20:15:55 by david            ###   ########.fr       */
+/*   Updated: 2024/08/13 17:35:27 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,25 @@
 
 #define MULTIPLIER 64
 
+typedef struct s_tt
+{
+	void		*img;
+}				t_tt;
+
 typedef struct s_mapdata
 {
 	char		**map;
 	char		**tmp;
 	int			height;
 	int			length;
+	int			fcolor;
+	int			ccolor;
+	t_tt		ntt;
+	t_tt		wtt;
+	t_tt		ett;
+	t_tt		stt;
 }				t_mapdata;
+
 
 typedef struct s_data
 {

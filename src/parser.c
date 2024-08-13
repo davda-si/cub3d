@@ -3,16 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/07/31 04:39:20 by david            ###   ########.fr       */
+/*   Updated: 2024/08/13 17:28:18 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static void	check_map(char **line, int fd, t_data *game)
+static int	check_textr(char **file, t_data *game)
+{
+	int	flag;
+	int	i;
+	int err;
+	
+	flag = 0;
+	i = 0;
+	err = 0;
+	while (file[i])
+	{
+		if (!(check_line(file)))
+		{
+			if (add_texture(file, game))
+				err = 1;
+			flag++;
+		}
+		i++;
+	}
+	if (flag != 6 || err == 1)
+		return (1);
+	return (0);
+}
+
+static int	check_map(char **line, int fd, t_data *game)
 {
 	int flag;
 
@@ -66,4 +90,8 @@ void	check_file(char *file, t_data *game)
 	}
 	fd = open(file, O_RDONLY);
 	file = read_file(fd, game);
+	if (check_textr(file, game))
+		error_handle(1, "textures don't work\n", game);
+	if (check_map(file, fd, game))
+		error_handle(1, "invalid map\n", game);
 }
