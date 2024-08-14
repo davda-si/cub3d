@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/08/13 17:35:27 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:05:35 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 typedef struct s_tt
 {
 	void		*img;
+	char		*name;
+	char		*addr;
+	int			bpp;
+	int			l_length;
+	int			endian;
 }				t_tt;
 
 typedef struct s_mapdata
@@ -71,9 +76,11 @@ int			ft_strcmp(char *str1, char *str2);
 
 //parsing
 void	check_file(char *file, t_data *game);
-int		check_line(char **file);
+int		check_line(char *file);
 int		check_str(char *str);
 void	mapline_add(t_data *game, char *line);
+int		find_path(char *str, int i);
+int		add_texture(char *file, t_data *game);
 
 //raytracing
 void	calculus(char **map);

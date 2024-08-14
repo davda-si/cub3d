@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/08/13 17:28:18 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:07:09 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static int	check_textr(char **file, t_data *game)
 	int	flag;
 	int	i;
 	int err;
-	
+
 	flag = 0;
 	i = 0;
 	err = 0;
-	while (file[i])
+	while (file[i] && err == 0)
 	{
-		if (!(check_line(file)))
+		if (!(check_line(file[i])))
 		{
-			if (add_texture(file, game))
+			if (add_texture(file[i], game))
 				err = 1;
 			flag++;
 		}
@@ -73,10 +73,10 @@ static char	**read_file(int fd, t_data *game)
 	return (file);
 }
 
-void	check_file(char *file, t_data *game)
+void	check_file(char *file, t_data **game)
 {
 	int		fd;
-	char	**file;
+	char	**cpy_file;
 
 	if ((fd = open(file, __O_DIRECTORY)) != -1)
 	{
@@ -89,9 +89,9 @@ void	check_file(char *file, t_data *game)
 		error_handle(1, "can't open file\n", game);
 	}
 	fd = open(file, O_RDONLY);
-	file = read_file(fd, game);
-	if (check_textr(file, game))
+	cpy_file = read_file(fd, game);
+	if (check_textr(cpy_file, game))
 		error_handle(1, "textures don't work\n", game);
-	if (check_map(file, fd, game))
+	if (check_map(cpy_file, fd, game))
 		error_handle(1, "invalid map\n", game);
 }

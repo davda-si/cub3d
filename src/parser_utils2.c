@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/08/14 20:07:03 by davda-si         ###   ########.fr       */
+/*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
+/*   Updated: 2024/08/14 16:12:08 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-int main(int ac, char **av)
+int	find_path(char *str, int i)
 {
-	t_data	*game;
-
-	if (ac != 2)
-		error_handle(0, "wrong number of arguments\n", &game);
-	if (ft_strnstr(av[1] + ft_strlen(av[1]) - 4,
-		".cub", ft_strlen(av[1])) == NULL)
-		error_handle(0, "wrong file name\n", &game);
-	ft_memset(&game, 0, sizeof(t_data));
-	game = data();
-	if (ac == 2)
-	{
-		check_file(av[1], &game);
-		calculus(/*map*/NULL);
-		//run game with all the calculus
-	}
-	return (0);
+	if (!str || !str[i])
+		return (0);
+	while (str[i] && (str[i] == ' ' || str[i] == '\n'
+			|| (str[i] >= 9 && str[i] <= 13)))
+				i++;
+	return (i);
 }
