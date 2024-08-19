@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/08/14 20:05:35 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:18:21 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_data		*data(void);
 t_mapdata	*mapdata(void);
 void		error_handle(int err, char *msg, t_data *game);
 int			ft_strcmp(char *str1, char *str2);
+void		free_mtx(char **mtx);
 
 //parsing
 void	check_file(char *file, t_data *game);
@@ -81,6 +82,8 @@ int		check_str(char *str);
 void	mapline_add(t_data *game, char *line);
 int		find_path(char *str, int i);
 int		add_texture(char *file, t_data *game);
+int		color_info(char *file, t_mapdata *map, t_data *game, int fl);
+void	skip_spaces(char **file, char *start);
 
 //raytracing
 void	calculus(char **map);

@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/08/14 20:07:09 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:41:07 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ static int	check_textr(char **file, t_data *game)
 
 static int	check_map(char **line, int fd, t_data *game)
 {
-	int flag;
-
-	flag = 0;
-	if (check_str(*line))
-		flag = 1;
-	game->map->map = maplines_add(game, *line);
+	
 	// after, add the line to the map, get a new line, more height and if flag is 1 free stuff and we good to go
 	
 }
