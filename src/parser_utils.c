@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/08/19 19:14:31 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:03:48 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,22 @@ static int	texture_info(char *type, t_tt txt, t_data *game)
 
 int	add_texture(char *file, t_data *game)
 {
+	int		pos;
 	char	start[3];
 
-	skip_spaces(&file, start);
+	pos = skip_spaces(&file, start);
 	if (!ft_strncmp(start, "NO", 3))
-		return (texture_info(start, game->map->ntt, game));
+		return (texture_info(file, game->map->ntt, game));
 	else if (!ft_strncmp(start, "SO", 3))
-		return (texture_info(start, game->map->stt, game));
+		return (texture_info(file, game->map->stt, game));
 	else if (!ft_strncmp(start, "WE", 3))
-		return (texture_info(start, game->map->wtt, game));
+		return (texture_info(file, game->map->wtt, game));
 	else if (!ft_strncmp(start, "EA", 3))
-		return (texture_info(start, game->map->ett, game));
+		return (texture_info(file, game->map->ett, game));
 	else if (!ft_strncmp(start, "F", 2))
-		return (color_info(start, game->map, game, 0));
+		return (color_info(file, game->map, game, 0));
 	else if (!ft_strncmp(start, "C", 2))
-		return (color_info(start, game->map, game, 1));
+		return (color_info(file, game->map, game, 1));
 	else
 		return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/08/19 19:41:07 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/20 19:44:50 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_textr(char **file, t_data *game)
 	flag = 0;
 	i = 0;
 	err = 0;
-	while (file[i] && err == 0)
+	while (file[i] && (err == 0 || flag != 6))
 	{
 		if (!(check_line(file[i])))
 		{
@@ -33,12 +33,21 @@ static int	check_textr(char **file, t_data *game)
 	}
 	if (flag != 6 || err == 1)
 		return (1);
+	game->map->after_txtr = i;
 	return (0);
 }
 
 static int	check_map(char **line, int fd, t_data *game)
 {
-	
+	int	i;
+
+	i = game->map->after_txtr;
+	while (line[i] && !map_start(line[i]))
+		i++;
+	if (!line[i])
+		error_handle(1, "No map found\n", game);
+	if (read_map(&line[i], game))
+		error_handle(1, "Map invalid\n", game);
 	// after, add the line to the map, get a new line, more height and if flag is 1 free stuff and we good to go
 	
 }

@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/08/19 19:16:39 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/20 18:03:31 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	color_info(char *file, t_mapdata *map, t_data *game, int fl)
 	}
 }
 
-void	skip_spaces(char **file, char *start)
+int	skip_spaces(char **file, char *start)
 {
 	int	i;
 	int	j;
@@ -87,4 +87,5 @@ void	skip_spaces(char **file, char *start)
 	else
 		start[j++] = '\0';
 	start[j] = '\0';
+	return (i);
 }
