@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/08/20 19:44:50 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/21 18:40:46 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	check_file(char *file, t_data **game)
 	cpy_file = read_file(fd, game);
 	if (check_textr(cpy_file, game))
 		error_handle(1, "textures don't work\n", game);
+	if (!(*game)->map->ntt.img || !(*game)->map->wtt.img || !(*game)->map->ett.img || !(*game)->map->stt.img || !(*game)->map->fcolor || !(*game)->map->ccolor)
+		error_handle(1, "textures missing\n", game);
 	if (check_map(cpy_file, fd, game))
 		error_handle(1, "invalid map\n", game);
 }
