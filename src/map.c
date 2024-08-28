@@ -6,23 +6,36 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:40:44 by david             #+#    #+#             */
-/*   Updated: 2024/08/22 20:19:15 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:57:29 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static int	check_each_line(char *line)
+static int	check_fstline(char *line)
 {
 	int	i;
 
 	i = 0;
 	while(line[i])
 	{
-		
+		if (line[i] != ' ' && line[i] != '1' && line[i] != '\n')
+			return (1);
 		i++;
 	}
 	return (0);
+}
+
+static int	end_map(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (!line || !line[i])
+		return (0);
+	while(line[i] && (line[i] == ' ' || line[i] == '\n' || (line[i] >= 9 && line[i] <= 13)))
+		i++;
+	return (i);
 }
 
 static int	is_wall(char *line)
@@ -60,11 +73,17 @@ int	read_map(char **file, t_data *game)
 	int	i;
 
 	i = 0;
-	while(file[i])
-	{
-		while(map_start(file[i]))
-			i++;
-		game->map->map_start = i;
-		
-	}
+	while(map_start(file[i]))
+		i++;
+	game->map->map_start = i;
+	if (check_fstline(file[i]))
+		error_handle(1, "Invalid map\n", game);
+	while (file[i] && (end_map(file[i]) != (int)ft_strlen(file[i])))
+		i++;
+	if (check_fstline(file[i]))
+		error_handle(1, "Invalid map\n", game);
+	game->map->map_end = i;
+	allct_map(file, game);
+	free_mtx(file);
+	return (0);
 }

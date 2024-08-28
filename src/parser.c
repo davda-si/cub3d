@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/08/21 18:40:46 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:03:11 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	check_map(char **line, int fd, t_data *game)
 		error_handle(1, "No map found\n", game);
 	if (read_map(&line[i], game))
 		error_handle(1, "Map invalid\n", game);
-	// after, add the line to the map, get a new line, more height and if flag is 1 free stuff and we good to go
-	
+	if (map_parse(game->map))
+		error_handle(1, "Map invalid\n", game);
 }
 
 static char	**read_file(int fd, t_data *game)

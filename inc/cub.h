@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/08/20 19:47:36 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:37:22 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_mapdata
 	char		**tmp;
 	int			after_txtr;
 	int			map_start;
+	int			map_end;
 	int			height;
 	int			length;
 	int			fcolor;
@@ -88,6 +89,8 @@ int		color_info(char *file, t_mapdata *map, t_data *game, int fl);
 int		skip_spaces(char **file, char *start);
 int		map_start(char *file);
 int		read_map(char **file, t_data *game);
+void	allct_map(char **map, t_data *game);
+int		map_parse(t_mapdata *map);
 
 //raytracing
 void	calculus(char **map);
