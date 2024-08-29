@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/08/14 20:07:03 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:24:38 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+void startGame()
+{
+	data()->mlx = mlx_init(); 
+	data()->win = mlx_new_window(data()->mlx, RESW, RESH, "CADA 1 NO SEU QUADRADO");
+	calculus(data()->map->map);
+	mlx_loop(data()->mlx);
+}
 
 int main(int ac, char **av)
 {
@@ -26,7 +34,7 @@ int main(int ac, char **av)
 	if (ac == 2)
 	{
 		check_file(av[1], &game);
-		calculus(/*map*/NULL);
+		startGame();
 		//run game with all the calculus
 	}
 	return (0);

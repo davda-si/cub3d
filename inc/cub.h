@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/08/28 19:37:22 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:54:12 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct s_mapdata
 	t_tt		stt;
 }				t_mapdata;
 
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
 
 typedef struct s_data
 {
@@ -69,6 +76,8 @@ typedef struct s_data
 	double		rayDirY;
 	double		deltaDistX;
 	double		deltaDistY;
+	int			perpWallDist;
+	t_img		current_frame;
 }				t_data;
 
 //general
