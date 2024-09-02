@@ -6,27 +6,33 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:36:11 by davda-si          #+#    #+#             */
-/*   Updated: 2024/08/29 20:25:57 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:45:50 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static int	check_each_line(char **map)
+static int	find_player(char **map)
 {
 	int		i;
 	int		j;
-	char	*letters;
+	int		found;
+	char	*player;
 
 	i = 0;
-	letters = "10NEWS\n";
+	found = 0;
+	player = "NEWS";
 	while(map[i])
 	{
 		j = 0;
 		while(map[i][j])
 		{
-			if (ft_strchr(letters, map[i][j] == 0))
-				return (1);
+			if (ft_strchr(player, map[i][j]))
+			{
+				if (found == 1)
+					return (1);
+				found = 1;
+			}
 			j++;
 		}
 		i++;
@@ -55,26 +61,56 @@ static int	check_st_end(char **map)
 	}
 	return (0);
 }
+
 static int	check_around_chr(char **map)
 {
 	int		i;
-	int		k;
-	char	*letters;
-	char	*in;
+	int		j;
+	char	*player;
 
-	letters = "10NEWS";
-	in = " NEWS";
+	player = "NEWS";
 	i = 0;
 	while (map[i])
 	{
-		
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '0' || ft_strchr(player, map[i][j]))
+				if (around_chr(map, i, j) != 4)
+					return (1);
+			j++;
+		}
+		i++;
 	}
+	return (0);
+}
+
+static int	check_each_line(char **map)
+{
+	int		i;
+	int		j;
+	char	*letters;
+
+	i = 0;
+	letters = "10NEWS\n";
+	while(map[i])
+	{
+		j = 0;
+		while(map[i][j])
+		{
+			if (ft_strchr(letters, map[i][j] == 0))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	map_parse(t_mapdata *map)
 {
-	if (check_each_line(map->map) && check_st_end(map->map))
+	if (check_each_line(map->map) && check_around_chr(map->map))
 		return (1);
-	if (check_around_chr(map->map) && find_player(map->map))
+	if (check_st_end(map->map) && find_player(map->map))
 		return (1);
 }

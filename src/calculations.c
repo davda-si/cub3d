@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/08/29 19:42:42 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/02 19:57:34 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ void raycastLoop()
         if(data()->rayDirX==0)
             data()->deltaDistX=1e30;
         else
-            data()->deltaDistX = abs(1 / data()->rayDirX);
+            data()->deltaDistX = fabs(1 / data()->rayDirX);
         if(data()->rayDirY==0)
             data()->deltaDistY=1e30;
         else
-            data()->deltaDistY = abs(1 / data()->rayDirY);
+            data()->deltaDistY = fabs(1 / data()->rayDirY);
         if(data()->rayDirX<0)
         {
             stepX=-1;

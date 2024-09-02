@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/08/29 18:24:38 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/02 19:49:39 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,18 @@ int main(int ac, char **av)
 {
 	t_data	*game;
 
+	game = NULL;
+	ft_memset(&game, 0, sizeof(t_data));
 	if (ac != 2)
-		error_handle(0, "wrong number of arguments\n", &game);
+		error_handle(0, "wrong number of arguments\n", game);
 	if (ft_strnstr(av[1] + ft_strlen(av[1]) - 4,
 		".cub", ft_strlen(av[1])) == NULL)
-		error_handle(0, "wrong file name\n", &game);
-	ft_memset(&game, 0, sizeof(t_data));
+		error_handle(0, "wrong file name\n", game);
 	game = data();
 	if (ac == 2)
 	{
 		check_file(av[1], &game);
-		startGame();
+		//startGame();
 		//run game with all the calculus
 	}
 	return (0);

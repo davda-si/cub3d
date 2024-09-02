@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/08/20 18:03:31 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:41:20 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,20 @@ int	skip_spaces(char **file, char *start)
 		start[j++] = '\0';
 	start[j] = '\0';
 	return (i);
+}
+
+int	around_chr(char **map, int i, int j)
+{
+	int	x;
+
+	x = 0;
+	if (ft_strchr("NEWS01", map[i][j + 1]))
+		x++;
+	if (ft_strchr("NEWS01", map[i][j - 1]))
+		x++;
+	if (ft_strchr("NEWS01", map[i + 1][j]))
+		x++;
+	if (ft_strchr("NEWS01", map[i - 1][j]))
+		x++;
+	return (x);
 }

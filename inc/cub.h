@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/08/29 19:54:12 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/02 19:51:49 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,10 @@ int		map_start(char *file);
 int		read_map(char **file, t_data *game);
 void	allct_map(char **map, t_data *game);
 int		map_parse(t_mapdata *map);
+int		around_chr(char **map, int i, int j);
 
 //raytracing
 void	calculus(char **map);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 
 #endif
