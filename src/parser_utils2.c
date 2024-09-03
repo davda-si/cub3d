@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/02 19:41:20 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:52:26 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	color_info(char *file, t_mapdata *map, t_data *game, int fl)
 	char	**rgb;
 
 	pos = find_path(file, 2);
-	rgb = ft_split(file[pos], ',');
+	rgb = ft_split(&file[pos], ',');
 	if (numb_check(rgb))
 	{
 		if (fl)
@@ -70,24 +70,24 @@ int	color_info(char *file, t_mapdata *map, t_data *game, int fl)
 		free_mtx(rgb);
 		error_handle(1, "Error with color values\n", game);
 	}
+	return (0);
 }
 
-int	skip_spaces(char **file, char *start)
+void	skip_spaces(char *file, char *start)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (*file[i] && (*file[i] == ' ' || (*file[i] >= 9 && *file[i] <= 13)))
+	while (file[i] && (file[i] == ' ' || (file[i] >= 9 && file[i] <= 13)))
 				i++;
-	start[j++] = *file[i++];
-	if (*file[i] && (*file[i] != ' ' && *file[i] != '\t'))
-		start[j++] = *file[i++];
+	start[j++] = file[i++];
+	if (file[i] && (file[i] != ' ' && file[i] != '\t'))
+		start[j++] = file[i++];
 	else
 		start[j++] = '\0';
 	start[j] = '\0';
-	return (i);
 }
 
 int	around_chr(char **map, int i, int j)

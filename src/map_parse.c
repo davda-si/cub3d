@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:36:11 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/02 19:45:50 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:57:27 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,5 @@ int	map_parse(t_mapdata *map)
 		return (1);
 	if (check_st_end(map->map) && find_player(map->map))
 		return (1);
+	return (0);
 }

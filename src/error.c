@@ -6,26 +6,11 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/02 20:41:17 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:09:18 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
-
-void	error_handle(int err, char *msg, t_data *game)
-{
-	if (err == 0)
-	{
-		ft_printf(msg);
-		exit (1);
-	}
-	else if (err == 1)
-	{
-		free_stuff(game);
-		ft_printf(msg);
-		exit (1);
-	}
-}
 
 void	free_mtx(char **mtx)
 {
@@ -81,17 +66,34 @@ void	free_stuff(t_data *game)
 		free(game->frame.name);
 	if (game->frame.addr)
 		free(game->frame.addr);
-	if (game->map->map)
-		free_mtx(game->map->map);
-	if (game->map->tmp)
-		free_mtx(game->map->tmp);
-	free_text(game);
+	if (game->map)
+	{
+		if (game->map->map)
+			free_mtx(game->map->map);
+		if (game->map->tmp)
+			free_mtx(game->map->tmp);
+		free_text(game);
+	}
 	if (game->current_frame.img)
 		mlx_destroy_image(game->mlx, game->current_frame.img);
 	if (game->current_frame.addr)
 		free(game->current_frame.addr);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
+	//mlx_destroy_window(game->mlx, game->win);
+	//mlx_destroy_display(game->mlx);
 	free(game->mlx);
-	free(game);
+}
+
+void	error_handle(int err, char *msg, t_data *game)
+{
+	if (err == 0)
+	{
+		ft_printf(msg);
+		exit (1);
+	}
+	else if (err == 1)
+	{
+		free_stuff(game);
+		ft_printf(msg);
+		exit (1);
+	}
 }

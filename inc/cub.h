@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/02 19:51:49 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:52:19 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ int			ft_strcmp(char *str1, char *str2);
 void		free_mtx(char **mtx);
 
 //parsing
-void	check_file(char *file, t_data **game);
+void	check_file(char *file, t_data *game);
 int		check_line(char *file);
 int		check_str(char *str);
 void	mapline_add(t_data *game, char *line);
 int		find_path(char *str, int i);
 int		add_texture(char *file, t_data *game);
 int		color_info(char *file, t_mapdata *map, t_data *game, int fl);
-int		skip_spaces(char **file, char *start);
+void	skip_spaces(char *file, char *start);
 int		map_start(char *file);
 int		read_map(char **file, t_data *game);
 void	allct_map(char **map, t_data *game);

@@ -8,9 +8,14 @@ SRC = $(SRC_DIR)/main.c \
 	  $(SRC_DIR)/parser.c \
 	  $(SRC_DIR)/parser_utils.c \
 	  $(SRC_DIR)/gen_utils.c \
+	  $(SRC_DIR)/map_parse.c \
+	  $(SRC_DIR)/map_utils.c \
+	  $(SRC_DIR)/map.c \
+	  $(SRC_DIR)/mlx_diy.c \
+	  $(SRC_DIR)/parser_utils2.c \
 
-CC = @cc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
 
 MLXFLAGS = -L. -lXext -L. -lX11
 
@@ -29,7 +34,7 @@ all: $(NAME)
 	@echo "*-----------------*"
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
-	$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(OBJS) $(CFLAGS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
 
 $(LIBFT):
 	@make -s -C $(LIBFT_PATH)
@@ -41,7 +46,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	@echo "*--------------*"

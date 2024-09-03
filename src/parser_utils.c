@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/08/20 18:03:48 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/03 19:59:00 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int text_exists(char *type)
 	int		pos;
 
 	pos = find_path(type, 3);
-	if (fd = open(&type[pos], O_RDONLY) == -1)
+	if ((fd = open(&type[pos], O_RDONLY)) == -1)
 	{
 		close(fd);
 		error_handle(1, "Path of texture invalid\n", data());
@@ -47,31 +47,37 @@ static int	texture_info(char *type, t_tt txt, t_data *game)
 
 int	add_texture(char *file, t_data *game)
 {
-	int		pos;
+	int		i;
 	char	start[3];
 
-	pos = skip_spaces(&file, start);
-	if (!ft_strncmp(start, "NO", 3))
-		return (texture_info(file, game->map->ntt, game));
-	else if (!ft_strncmp(start, "SO", 3))
-		return (texture_info(file, game->map->stt, game));
-	else if (!ft_strncmp(start, "WE", 3))
-		return (texture_info(file, game->map->wtt, game));
-	else if (!ft_strncmp(start, "EA", 3))
-		return (texture_info(file, game->map->ett, game));
-	else if (!ft_strncmp(start, "F", 2))
-		return (color_info(file, game->map, game, 0));
-	else if (!ft_strncmp(start, "C", 2))
-		return (color_info(file, game->map, game, 1));
-	else
-		return (1);
+	i = 0;
+	while(file[i] != '\n' && file[i] != '\0')
+	{
+		skip_spaces(file, start);
+		if (!ft_strncmp(start, "NO", 3) && !game->map->ntt.name)
+			return (texture_info(file, game->map->ntt, game));
+		else if (!ft_strncmp(start, "SO", 3) && !game->map->stt.name)
+			return (texture_info(file, game->map->stt, game));
+		else if (!ft_strncmp(start, "WE", 3) && !game->map->wtt.name)
+			return (texture_info(file, game->map->wtt, game));
+		else if (!ft_strncmp(start, "EA", 3) && !game->map->ett.name)
+			return (texture_info(file, game->map->ett, game));
+		else if (!ft_strncmp(start, "F", 2) && !game->map->fcolor)
+			return (color_info(file, game->map, game, 0));
+		else if (!ft_strncmp(start, "C", 2) && !game->map->ccolor)
+			return (color_info(file, game->map, game, 1));
+		else
+			return (1);
+		i++;
+	}
+	return (1);
 }
 
 int check_line(char *file)
 {
 	char	start[3];
 
-	skip_spaces(&file, start);
+	skip_spaces(file, start);
 	if (!ft_strncmp(start, "NO", 3) || !ft_strncmp(start, "SO", 3)
 		|| !ft_strncmp(start, "WE", 3) || !ft_strncmp(start, "EA", 3))
 		return (0);
@@ -85,7 +91,7 @@ int	check_str(char *str)
 	int i;
 
 	i = 0;
-	while (str[i] != '\n' && str[i] != NULL)
+	while (str[i] != '\n' && str[i] != '\0')
 	{
 		if (str[i] != '1' && str[i] != '0' && str[i] != 'N' && str[i] != 'E'
 			&& str[i] != 'W' && str[i] != 'S' && str[i] != ' ')

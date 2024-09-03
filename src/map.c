@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:40:44 by david             #+#    #+#             */
-/*   Updated: 2024/08/28 18:57:29 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:58:25 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,6 @@ static int	end_map(char *line)
 	while(line[i] && (line[i] == ' ' || line[i] == '\n' || (line[i] >= 9 && line[i] <= 13)))
 		i++;
 	return (i);
-}
-
-static int	is_wall(char *line)
-{
-	int	i;
-
-	i = 0;
-	while(line[i])
-	{
-		if (line[i] != '1' && line[i] != ' ' && !(line[i] >= 9 && line[i] <= 13))
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int	map_start(char *file)
