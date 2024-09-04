@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/03 20:49:35 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:55:13 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	startGame()
 {
 	data()->mlx = mlx_init(); 
 	data()->win = mlx_new_window(data()->mlx, RESW, RESH, "CADA 1 NO SEU QUADRADO");
-	calculus(data()->map->map);
+	calculus(data()->map.map);
 	mlx_loop(data()->mlx);
 }
 
@@ -36,7 +36,6 @@ int main(int ac, char **av)
 		exit (0);
 	}
 	ft_memset(&game, 0, (sizeof(t_data)));
-	//ft_memset(&game.map, 0, (sizeof(t_mapdata)));
 	*data() = game;
 	if (ac == 2)
 	{

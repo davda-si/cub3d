@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/03 17:01:16 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:55:36 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void raycastLoop()
                 mapY += stepY;
                 side = 1;
             }
-            if (data()->map->map[mapX][mapY] > 0) 
+            if (data()->map.map[mapX][mapY] > 0) 
                 hit = 1;
         }
         if(side == 0)

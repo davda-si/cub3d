@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/03 19:52:19 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:53:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	t_tt		frame;
-	t_mapdata	*map;
+	t_mapdata	map;
 	double		posX;//player pos
 	double		posY;
 	double		dirX;

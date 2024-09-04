@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/03 19:27:16 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/04 19:04:07 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	check_textr(char **file, t_data *game)
 	}
 	if (flag != 6 || err == 1)
 		return (1);
-	game->map->after_txtr = i;
+	game->map.after_txtr = i;
 	return (0);
 }
 
@@ -41,14 +41,14 @@ static int	check_map(char **line, t_data *game)
 {
 	int	i;
 
-	i = game->map->after_txtr;
+	i = game->map.after_txtr;
 	while (line[i] && !map_start(line[i]))
 		i++;
 	if (!line[i])
 		error_handle(1, "No map found\n", game);
 	if (read_map(&line[i], game))
 		error_handle(1, "Map invalid\n", game);
-	if (map_parse(game->map))
+	if (map_parse(&game->map))
 		error_handle(1, "Map invalid\n", game);
 	return (0);
 }
@@ -102,7 +102,7 @@ void	check_file(char *file, t_data *game)
 		free_mtx(cpy_file);
 		error_handle(1, "textures don't work\n", game);
 	}
-	if (!game->map->ntt.img || !game->map->wtt.img || !game->map->ett.img || !game->map->stt.img || !game->map->fcolor || !game->map->ccolor)
+	if (!game->map.ntt.img || !game->map.wtt.img || !game->map.ett.img || !game->map.stt.img || !game->map.fcolor || !game->map.ccolor)
 	{
 		free_mtx(cpy_file);
 		error_handle(1, "textures missing\n", game);
