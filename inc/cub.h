@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/04 18:53:04 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:46:25 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int		check_line(char *file);
 int		check_str(char *str);
 void	mapline_add(t_data *game, char *line);
 int		find_path(char *str, int i);
-int		add_texture(char *file, t_data *game);
-int		color_info(char *file, t_mapdata *map, t_data *game, int fl);
+int		add_texture(char *file, t_data *game, char **map);
+int		color_info(char *file, t_mapdata *map, int fl);
 void	skip_spaces(char *file, char *start);
 int		map_start(char *file);
 int		read_map(char **file, t_data *game);

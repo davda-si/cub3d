@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/04 19:04:07 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:44:34 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_textr(char **file, t_data *game)
 	{
 		if (!(check_line(file[i])))
 		{
-			if (add_texture(file[i], game))
+			if (add_texture(file[i], game, file))
 				err = 1;
 			flag++;
 		}
@@ -45,7 +45,10 @@ static int	check_map(char **line, t_data *game)
 	while (line[i] && !map_start(line[i]))
 		i++;
 	if (!line[i])
+	{
+		free_mtx(line);
 		error_handle(1, "No map found\n", game);
+	}
 	if (read_map(&line[i], game))
 		error_handle(1, "Map invalid\n", game);
 	if (map_parse(&game->map))

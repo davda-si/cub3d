@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/03 19:52:26 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:46:13 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	find_path(char *str, int i)
 	return (i);
 }
 
-int	color_info(char *file, t_mapdata *map, t_data *game, int fl)
+int	color_info(char *file, t_mapdata *map, int fl)
 {
 	int		pos;
 	char	**rgb;
@@ -68,7 +68,7 @@ int	color_info(char *file, t_mapdata *map, t_data *game, int fl)
 	else
 	{
 		free_mtx(rgb);
-		error_handle(1, "Error with color values\n", game);
+		return (1);
 	}
 	return (0);
 }
