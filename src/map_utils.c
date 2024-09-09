@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/05 18:46:22 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 19:02:50 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,24 @@ void	allct_map(char **map, t_data *game)
 	end = game->map.map_end;
 	game->map.map = malloc(sizeof(char **) * (end - start + 1));
 	if (!game->map.map)
+	{
+		free_mtx(map);
 		error_handle(1, "Failed map allocation\n", game);
+	}
 	while (start < end)
 	{
 		game->map.map[i] = ft_strdup(map[start]);
 		i++;
 		start++;
 	}
+}
+
+void init_texture(t_tt *txt)
+{
+	txt->img = NULL;
+	txt->name = NULL;
+	txt->addr = NULL;
+	txt->bpp = 0;
+	txt->l_length = 0;
+	txt->endian = 0;
 }

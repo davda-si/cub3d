@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/05 19:20:17 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 19:18:35 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void	free_mtx(char **mtx)
 	while (mtx[i])
 	{
 		free(mtx[i]);
-		mtx[i] = NULL;
 		i++;
 	}
 	free(mtx);
-	*mtx = NULL;
 }
 
 static void	free_text(t_data *game)
@@ -76,7 +74,7 @@ void	free_stuff(t_data *game)
 	if (game->current_frame.addr)
 		free(game->current_frame.addr);
 	//mlx_destroy_window(game->mlx, game->win);
-	//mlx_destroy_display(game->mlx);
+	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 }
 

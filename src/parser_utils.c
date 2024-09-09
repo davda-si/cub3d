@@ -6,13 +6,13 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/05 19:46:48 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 19:16:08 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static int text_exists(char *type)
+static int text_exists(char *type, char **map)
 {
 	int		fd;
 	int		pos;
@@ -20,30 +20,30 @@ static int text_exists(char *type)
 	pos = find_path(type, 3);
 	if ((fd = open(&type[pos], O_RDONLY)) == -1)
 	{
-		close(fd);
+		free_mtx(map);
 		error_handle(1, "Path of texture invalid\n", data());
 	}
 	close(fd);
 	return (1);
 }
 
-static int	texture_info(char *type, t_tt txt, t_data *game, char **map)
+static int	texture_info(char *type, t_tt *txt, t_data *game, char **map)
 {
 	int	pos;
 	int	px;
 
 	px = MULTIPLIER;
 	pos = find_path(type, 3);
-	if (text_exists(type))
+	if (text_exists(type, map))
 	{
-		txt.name = ft_strdup(&type[pos]);
-		txt.img = mlx_xpm_file_to_image(game->mlx, txt.name, &px, &px);
-		if (!txt.img)
+		txt->name = ft_strdup(&type[pos]);
+		txt->img = mlx_xpm_file_to_image(game->mlx, txt->name, &px, &px);
+		if (!txt->img)
 		{
 			free_mtx(map);
 			error_handle(1, "Error with texture/n", game);
 		}
-		txt.addr = mlx_get_data_addr(txt.img, &txt.bpp, &txt.l_length, &txt.endian);
+		txt->addr = mlx_get_data_addr(txt->img, &txt->bpp, &txt->l_length, &txt->endian);
 	}
 	return (0);
 }
@@ -58,13 +58,16 @@ int	add_texture(char *file, t_data *game, char **map)
 	{
 		skip_spaces(file, start);
 		if (!ft_strncmp(start, "NO", 3) && !game->map.ntt.name)
-			return (texture_info(file, game->map.ntt, game, map));
+		{
+			init_texture(&game->map.ntt);
+			return (texture_info(file, &game->map.ntt, game, map));
+		}
 		else if (!ft_strncmp(start, "SO", 3) && !game->map.stt.name)
-			return (texture_info(file, game->map.stt, game, map));
+			return (texture_info(file, &game->map.stt, game, map));
 		else if (!ft_strncmp(start, "WE", 3) && !game->map.wtt.name)
-			return (texture_info(file, game->map.wtt, game, map));
+			return (texture_info(file, &game->map.wtt, game, map));
 		else if (!ft_strncmp(start, "EA", 3) && !game->map.ett.name)
-			return (texture_info(file, game->map.ett, game, map));
+			return (texture_info(file, &game->map.ett, game, map));
 		else if (!ft_strncmp(start, "F", 2) && !game->map.fcolor)
 			return (color_info(file, &game->map, 0));
 		else if (!ft_strncmp(start, "C", 2) && !game->map.ccolor)

@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/05 19:44:34 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/09 19:14:21 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	check_textr(char **file, t_data *game)
 		}
 		i++;
 	}
+	printf("\n\n%d\n\n%d\n\n", flag, err);
 	if (flag != 6 || err == 1)
 		return (1);
 	game->map.after_txtr = i;
