@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/09 19:14:21 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:54:33 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,16 @@ static int	check_textr(char **file, t_data *game)
 	flag = 0;
 	i = 0;
 	err = 0;
-	while (file[i] && (err == 0 || flag != 6))
+	while (file[i] && !map_start(file[i]) && (err == 0 || flag != 6))
 	{
 		if (!(check_line(file[i])))
 		{
-			if (add_texture(file[i], game, file))
+			if (add_texture(file[i], game, file) == -1)
 				err = 1;
 			flag++;
 		}
 		i++;
 	}
-	printf("\n\n%d\n\n%d\n\n", flag, err);
 	if (flag != 6 || err == 1)
 		return (1);
 	game->map.after_txtr = i;
@@ -67,7 +66,7 @@ static char	**read_file(int fd)
 	line = get_next_line(fd);
 	if (!line)
 		return (NULL);
-	while(1)
+	while (1)
 	{
 		tmp = get_next_line(fd);
 		if (!tmp)

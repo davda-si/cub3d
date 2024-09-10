@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:40:44 by david             #+#    #+#             */
-/*   Updated: 2024/09/05 19:45:13 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:51:48 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_fstline(char *line)
 	int	i;
 
 	i = 0;
-	while(line[i])
+	while(line && line[i])
 	{
 		if (line[i] != ' ' && line[i] != '1' && line[i] != '\n')
 			return (1);
@@ -43,7 +43,7 @@ int	map_start(char *file)
 	int	i;
 
 	i = 0;
-	if (file[i] == '\0')
+	if (!file || file[i] == '\0')
 		return (0);
 	while(file[i])
 	{
@@ -59,7 +59,7 @@ int	read_map(char **file, t_data *game)
 	int	i;
 
 	i = 0;
-	while(map_start(file[i]))
+	while(!map_start(file[i]))
 		i++;
 	game->map.map_start = i;
 	if (check_fstline(file[i]))
@@ -75,7 +75,10 @@ int	read_map(char **file, t_data *game)
 		error_handle(1, "Invalid map\n", game);
 	}
 	game->map.map_end = i;
+	//printf("%p\n", file);
 	allct_map(file, game);
-	free_mtx(file);
+	//printf("%p\n", file);
+	//free_mtx(file);
+	//printf("%p\n", file);
 	return (0);
 }

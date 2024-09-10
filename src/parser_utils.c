@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/09 19:16:08 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:12:40 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,40 @@ int	add_texture(char *file, t_data *game, char **map)
 	i = 0;
 	while(file[i] != '\n' && file[i] != '\0')
 	{
-		skip_spaces(file, start);
+		i += skip_spaces(file, start);
 		if (!ft_strncmp(start, "NO", 3) && !game->map.ntt.name)
 		{
 			init_texture(&game->map.ntt);
 			return (texture_info(file, &game->map.ntt, game, map));
 		}
 		else if (!ft_strncmp(start, "SO", 3) && !game->map.stt.name)
+		{
+			init_texture(&game->map.stt);
 			return (texture_info(file, &game->map.stt, game, map));
+		}
 		else if (!ft_strncmp(start, "WE", 3) && !game->map.wtt.name)
+		{
+			init_texture(&game->map.wtt);
 			return (texture_info(file, &game->map.wtt, game, map));
+		}
 		else if (!ft_strncmp(start, "EA", 3) && !game->map.ett.name)
+		{
+			init_texture(&game->map.ett);
 			return (texture_info(file, &game->map.ett, game, map));
+		}
 		else if (!ft_strncmp(start, "F", 2) && !game->map.fcolor)
-			return (color_info(file, &game->map, 0));
-		else if (!ft_strncmp(start, "C", 2) && !game->map.ccolor)
 			return (color_info(file, &game->map, 1));
+		else if (!ft_strncmp(start, "C", 2) && !game->map.ccolor)
+			return (color_info(file, &game->map, 0));
 		else
-			return (1);
+			return (-1);
 		i++;
+		 while (file[i] != '\n' && file[i] != '\0')
+			i++;
+		if (file[i] == '\n')
+			i++;
 	}
-	return (1);
+	return (-2);
 }
 
 int check_line(char *file)

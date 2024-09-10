@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/05 19:46:13 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:34:28 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	color_info(char *file, t_mapdata *map, int fl)
 
 	pos = find_path(file, 2);
 	rgb = ft_split(&file[pos], ',');
+	
 	if (numb_check(rgb))
 	{
 		if (fl)
@@ -73,7 +74,7 @@ int	color_info(char *file, t_mapdata *map, int fl)
 	return (0);
 }
 
-void	skip_spaces(char *file, char *start)
+int	skip_spaces(char *file, char *start)
 {
 	int	i;
 	int	j;
@@ -82,12 +83,12 @@ void	skip_spaces(char *file, char *start)
 	j = 0;
 	while (file[i] && (file[i] == ' ' || (file[i] >= 9 && file[i] <= 13)))
 				i++;
-	start[j++] = file[i++];
+	if (file[i])
+		start[j++] = file[i++];
 	if (file[i] && (file[i] != ' ' && file[i] != '\t'))
 		start[j++] = file[i++];
-	else
-		start[j++] = '\0';
 	start[j] = '\0';
+	return (i);
 }
 
 int	around_chr(char **map, int i, int j)

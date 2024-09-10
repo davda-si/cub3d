@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/09 19:12:10 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:33:57 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int main(int ac, char **av)
 		check_file(av[1], &game);
 		//startGame();
 	}
+	error_handle(1, "acabou ta certo\n", &game);
 	return (0);
 }

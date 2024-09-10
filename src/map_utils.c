@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/09 19:02:50 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:39:13 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	allct_map(char **map, t_data *game)
 		i++;
 		start++;
 	}
+	game->map.map[i] = NULL;
 }
 
 void init_texture(t_tt *txt)

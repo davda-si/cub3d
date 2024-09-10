@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:36:11 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/04 19:01:22 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:58:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	check_st_end(char **map)
 	int	k;
 
 	i = 0;
-	while(map[i])
+	while(map && map[i])
 	{
 		j = 0;
 		k = ft_strlen(map[i]) - 1;
