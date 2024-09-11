@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/10 18:39:13 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:46:20 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,41 @@ void init_texture(t_tt *txt)
 	txt->bpp = 0;
 	txt->l_length = 0;
 	txt->endian = 0;
+}
+
+static int maplength(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map && map[i])
+		i++;
+	return (i);
+}
+
+int	check_upanddown(char **map, int i, int j, int flag)
+{
+	if (flag == 0)
+	{
+		while (i > 0)
+		{
+			i--;
+			if (map[i][j] && map[i][j] == '1')
+				return (0);
+			if (map[i][j] && (map[i][j] == ' ' || (map[i][j] >= 9 && map[i][j] <= 13)))
+				return (1);
+		}
+	}
+	else
+	{
+		while (i < maplength(map))
+		{
+			i++;
+			if (map[i][j] && map[i][j] == '1')
+				return (0);
+			if (map[i][j] && (map[i][j] == ' ' || (map[i][j] >= 9 && map[i][j] <= 13)))
+				return (1);
+		}
+	}
+	return (-1);
 }

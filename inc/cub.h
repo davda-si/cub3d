@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/10 16:04:17 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:34:30 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	allct_map(char **map, t_data *game);
 int		map_parse(t_mapdata *map);
 int		around_chr(char **map, int i, int j);
 void 	init_texture(t_tt *txt);
+int		check_upanddown(char **map, int i, int j, int flag);
 
 //raytracing
 void	calculus(char **map);

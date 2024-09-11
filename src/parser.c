@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/10 18:54:33 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:15:55 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ static int	check_map(char **line, t_data *game)
 		error_handle(1, "No map found\n", game);
 	}
 	if (read_map(&line[i], game))
+	{
+		free_mtx(line);
 		error_handle(1, "Map invalid\n", game);
+	}
 	if (map_parse(&game->map))
+	{
+		free_mtx(line);
 		error_handle(1, "Map invalid\n", game);
+	}
 	return (0);
 }
 
