@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:40:44 by david             #+#    #+#             */
-/*   Updated: 2024/09/11 19:15:14 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:38:16 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	map_start(char *file)
 	return (1);
 }
 
-int	read_map(char **file, t_data *game)
+int	read_map(char **file, char **full_map, t_data *game)
 {
 	int	i;
 
@@ -64,21 +64,17 @@ int	read_map(char **file, t_data *game)
 	game->map.map_start = i;
 	if (check_fstline(file[i]))
 	{
-		free_mtx(file);
+		free_mtx(full_map);
 		error_handle(1, "Invalid map\n", game);
 	}
 	while (file[i] && (end_map(file[i]) != (int)ft_strlen(file[i])))
 		i++;
 	if (check_fstline(file[i]))
 	{
-		free_mtx(file);
+		free_mtx(full_map);
 		error_handle(1, "Invalid map\n", game);
 	}
 	game->map.map_end = i;
-	//printf("%p\n", file);
 	allct_map(file, game);
-	//printf("%p\n", file);
-	//free_mtx(file);
-	//printf("%p\n", file);
 	return (0);
 }

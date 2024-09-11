@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/11 16:34:30 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:35:41 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int		add_texture(char *file, t_data *game, char **map);
 int		color_info(char *file, t_mapdata *map, int fl);
 int		skip_spaces(char *file, char *start);
 int		map_start(char *file);
-int		read_map(char **file, t_data *game);
+int		read_map(char **file, char **map, t_data *game);
 void	allct_map(char **map, t_data *game);
 int		map_parse(t_mapdata *map);
 int		around_chr(char **map, int i, int j);
