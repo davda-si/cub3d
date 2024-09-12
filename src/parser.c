@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/11 19:34:53 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:05:50 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,11 @@ static int	check_map(char **line, t_data *game)
 
 static char	**read_file(int fd)
 {
-	char	*line;
 	char	*tmp;
 	char	*tmp2;
 	char	**file;
 
-	line = get_next_line(fd);
+	file = get_next_line(fd);
 	if (!line)
 		return (NULL);
 	while (1)
@@ -87,6 +86,23 @@ static char	**read_file(int fd)
 	return (file);
 }
 
+static void	how_big(int fd, t_data *game, char *fl)
+{
+	char	c;
+	int		i;
+
+	i = 0;
+	fd = open(fl, O_RDONLY);
+	while (read(fd, &c, 1))
+	{
+		if (c == '\n')
+			i++;
+	}
+	if (c != '\n')
+		i++;
+	game->file_size = i;
+}
+
 void	check_file(char *file, t_data *game)
 {
 	int		fd;
@@ -98,12 +114,11 @@ void	check_file(char *file, t_data *game)
 		error_handle(1, "file's a directory\n", game);
 	}
 	if ((fd = open(file, O_RDONLY)) == -1)
-	{
-		close(fd);
 		error_handle(1, "can't open file\n", game);
-	}
-	fd = open(file, O_RDONLY);
+	close(fd);
+	how_big(fd, game, file);
 	cpy_file = read_file(fd);
+	close(fd);
 	if (!cpy_file)
 		error_handle(1, "Error: empty file\n", game);
 	if (check_textr(cpy_file, game))

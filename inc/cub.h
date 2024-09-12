@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/11 19:35:41 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/12 19:05:15 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_data
 	double		deltaDistX;
 	double		deltaDistY;
 	int			perpWallDist;
+	int			file_size;
 	t_img		current_frame;
 }				t_data;
 

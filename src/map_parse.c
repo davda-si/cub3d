@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:36:11 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/11 16:48:29 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:26:31 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ static int	find_player(char **map)
 			if (ft_strchr(player, map[i][j]))
 			{
 				if (found == 1)
-				{
-					printf("watashi\n");
 					return (1);
-				}
 				found = 1;
 			}
 			j++;
