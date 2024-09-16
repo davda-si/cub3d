@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/10 18:33:57 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/16 20:04:36 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int main(int ac, char **av)
 		exit (0);
 	}
 	ft_memset(&game, 0, (sizeof(t_data)));
-	*data() = game;
 	game.mlx = mlx_init();
+	*data() = game;
 	if (ac == 2)
 	{
 		check_file(av[1], &game);

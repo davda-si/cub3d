@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:40:44 by david             #+#    #+#             */
-/*   Updated: 2024/09/11 19:38:16 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/16 17:53:36 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	map_start(char *file)
 	int	i;
 
 	i = 0;
-	if (!file || file[i] == '\0')
+	if (!file || file[i] == '\0' || file[0] == '\n')
 		return (0);
 	while(file[i])
 	{
@@ -67,7 +67,7 @@ int	read_map(char **file, char **full_map, t_data *game)
 		free_mtx(full_map);
 		error_handle(1, "Invalid map\n", game);
 	}
-	while (file[i] && (end_map(file[i]) != (int)ft_strlen(file[i])))
+	while (file[i] && (end_map(file[i]) != (int)ft_strlen(file[i] + 1)))
 		i++;
 	if (check_fstline(file[i]))
 	{

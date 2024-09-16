@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:36:11 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/12 17:26:31 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/16 19:03:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,12 @@ static int	find_player(char **map)
 		while(map[i][j])
 		{
 			if (ft_strchr(player, map[i][j]))
-			{
-				if (found == 1)
-					return (1);
-				found = 1;
-			}
+				found++;
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (found);
 }
 
 static int	check_st_end(char **map)
@@ -50,16 +46,13 @@ static int	check_st_end(char **map)
 	while(map && map[i])
 	{
 		j = 0;
-		k = ft_strlen(map[i]) - 1;
+		k = ft_strlen(map[i]);
 		while (map[i][j] == ' ' || (map[i][j] >= 9 && map[i][j] <= 13))
 			j++;
 		while (map[i][k] == ' ' || (map[i][k] >= 9 && map[i][k] <= 13))
 			k--;
 		if (map[i][j] != '1' || map[i][k] != '1')
-		{
-			printf("eu\n");
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -100,7 +93,7 @@ static int	check_each_line(char **map)
 
 	i = 0;
 	letters = "10NEWS\n";
-	while(map[i])
+	while(map && map[i])
 	{
 		j = 0;
 		while(map[i][j])
@@ -118,7 +111,7 @@ int	map_parse(t_mapdata *map)
 {
 	if (check_each_line(map->map) && check_around_chr(map->map))
 		return (1);
-	if (check_st_end(map->map) && find_player(map->map))
+	if (check_st_end(map->map) && (find_player(map->map) != 1))
 		return (1);
 	return (0);
 }

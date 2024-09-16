@@ -6,23 +6,25 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/10 18:12:40 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/16 19:59:13 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static int text_exists(char *type, char **map)
+static int text_exists(char *type, char **map, int pos, t_data *game)
 {
 	int		fd;
-	int		pos;
+	char	*clean_path;
 
-	pos = find_path(type, 3);
-	if ((fd = open(&type[pos], O_RDONLY)) == -1)
+	clean_path = ft_strtrim(&type[pos], " \n\t");
+	if ((fd = open(clean_path, O_RDONLY)) == -1)
 	{
+		free(clean_path);
 		free_mtx(map);
-		error_handle(1, "Path of texture invalid\n", data());
+		error_handle(1, "Path of texture invalid\n", game);
 	}
+	free(clean_path);
 	close(fd);
 	return (1);
 }
@@ -31,17 +33,21 @@ static int	texture_info(char *type, t_tt *txt, t_data *game, char **map)
 {
 	int	pos;
 	int	px;
+	char	*clean_path;
 
 	px = MULTIPLIER;
 	pos = find_path(type, 3);
-	if (text_exists(type, map))
+	if (text_exists(type, map, pos, game))
 	{
-		txt->name = ft_strdup(&type[pos]);
+		clean_path = ft_strtrim(&type[pos], " \n\t");
+		txt->name = ft_strdup(clean_path);
 		txt->img = mlx_xpm_file_to_image(game->mlx, txt->name, &px, &px);
+		free(clean_path);
 		if (!txt->img)
 		{
+			free(clean_path);
 			free_mtx(map);
-			error_handle(1, "Error with texture/n", game);
+			error_handle(1, "Error with texture\n", game);
 		}
 		txt->addr = mlx_get_data_addr(txt->img, &txt->bpp, &txt->l_length, &txt->endian);
 	}

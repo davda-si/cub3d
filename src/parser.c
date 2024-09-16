@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/12 19:05:50 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/16 19:55:42 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,30 +62,6 @@ static int	check_map(char **line, t_data *game)
 	return (0);
 }
 
-static char	**read_file(int fd)
-{
-	char	*tmp;
-	char	*tmp2;
-	char	**file;
-
-	file = get_next_line(fd);
-	if (!line)
-		return (NULL);
-	while (1)
-	{
-		tmp = get_next_line(fd);
-		if (!tmp)
-			break ;
-		tmp2 = ft_strjoin(line, tmp);
-		free(line);
-		free(tmp);
-		line = tmp2;
-	}
-	file = ft_split(line, '\n');
-	free(line);
-	return (file);
-}
-
 static void	how_big(int fd, t_data *game, char *fl)
 {
 	char	c;
@@ -101,7 +77,32 @@ static void	how_big(int fd, t_data *game, char *fl)
 	if (c != '\n')
 		i++;
 	game->file_size = i;
+	close(fd);
 }
+
+static char	**read_file(int fd, t_data *game, char *fl)
+{
+	int		i;
+	char	**file;
+
+	i = 0;
+	how_big(fd, game, fl);
+	fd = open(fl, O_RDONLY);
+	file = (char **)malloc(sizeof(char *) * (game->file_size + 1));
+	if (!file)
+		return (NULL);
+	while (i <= game->file_size)
+	{
+		file[i] = get_next_line(fd);
+		if (!file[i])
+			break ;
+		i++;
+	}
+	file[i] = NULL;
+	close(fd);
+	return (file);
+}
+
 
 void	check_file(char *file, t_data *game)
 {
@@ -116,9 +117,7 @@ void	check_file(char *file, t_data *game)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		error_handle(1, "can't open file\n", game);
 	close(fd);
-	how_big(fd, game, file);
-	cpy_file = read_file(fd);
-	close(fd);
+	cpy_file = read_file(fd, game, file);
 	if (!cpy_file)
 		error_handle(1, "Error: empty file\n", game);
 	if (check_textr(cpy_file, game))
@@ -128,6 +127,7 @@ void	check_file(char *file, t_data *game)
 	}
 	if (!game->map.ntt.img || !game->map.wtt.img || !game->map.ett.img || !game->map.stt.img || !game->map.fcolor || !game->map.ccolor)
 	{
+		printf("ntt - %p wtt - %p ett - %p stt - %p f - %d c %d\n", game->map.ntt.img, game->map.wtt.img, game->map.ett.img, game->map.stt.img, game->map.fcolor, game->map.ccolor);
 		free_mtx(cpy_file);
 		error_handle(1, "textures missing\n", game);
 	}
