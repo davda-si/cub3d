@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/11 16:46:20 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:40:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ void	allct_map(char **map, t_data *game)
 		i++;
 		start++;
 	}
+	game->map.height = i;
 	game->map.map[i] = NULL;
 }
 
-void init_texture(t_tt *txt)
+void	init_texture(t_tt *txt)
 {
 	txt->img = NULL;
 	txt->name = NULL;
@@ -46,7 +47,7 @@ void init_texture(t_tt *txt)
 	txt->endian = 0;
 }
 
-static int maplength(char **map)
+static int	maplength(char **map)
 {
 	int	i;
 
@@ -65,7 +66,8 @@ int	check_upanddown(char **map, int i, int j, int flag)
 			i--;
 			if (map[i][j] && map[i][j] == '1')
 				return (0);
-			if (map[i][j] && (map[i][j] == ' ' || (map[i][j] >= 9 && map[i][j] <= 13)))
+			if (map[i][j] && (map[i][j] == ' '
+				|| (map[i][j] >= 9 && map[i][j] <= 13)))
 				return (1);
 		}
 	}
@@ -76,7 +78,8 @@ int	check_upanddown(char **map, int i, int j, int flag)
 			i++;
 			if (map[i][j] && map[i][j] == '1')
 				return (0);
-			if (map[i][j] && (map[i][j] == ' ' || (map[i][j] >= 9 && map[i][j] <= 13)))
+			if (map[i][j] && (map[i][j] == ' '
+				|| (map[i][j] >= 9 && map[i][j] <= 13)))
 				return (1);
 		}
 	}

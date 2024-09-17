@@ -13,11 +13,16 @@ SRC = $(SRC_DIR)/main.c \
 	  $(SRC_DIR)/map.c \
 	  $(SRC_DIR)/mlx_diy.c \
 	  $(SRC_DIR)/parser_utils2.c \
+	  $(SRC_DIR)/simulation.c \
+	  $(SRC_DIR)/calc_utils.c \
+	  $(SRC_DIR)/render.c \
+	  $(SRC_DIR)/hook.c \
+	  $(SRC_DIR)/rotations.c \
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
-MLXFLAGS = -L. -lXext -L. -lX11
+MLXFLAGS = -L. -lXext -L. -lX11 -lz -o3
 
 LIBFT_PATH = ./inc/libft
 LIBFT = $(LIBFT_PATH)/libft.a

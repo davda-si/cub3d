@@ -6,19 +6,20 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/16 19:59:13 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:47:40 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static int text_exists(char *type, char **map, int pos, t_data *game)
+static int	text_exists(char *type, char **map, int pos, t_data *game)
 {
 	int		fd;
 	char	*clean_path;
 
 	clean_path = ft_strtrim(&type[pos], " \n\t");
-	if ((fd = open(clean_path, O_RDONLY)) == -1)
+	fd = open(clean_path, O_RDONLY);
+	if (fd == -1)
 	{
 		free(clean_path);
 		free_mtx(map);
@@ -31,8 +32,8 @@ static int text_exists(char *type, char **map, int pos, t_data *game)
 
 static int	texture_info(char *type, t_tt *txt, t_data *game, char **map)
 {
-	int	pos;
-	int	px;
+	int		pos;
+	int		px;
 	char	*clean_path;
 
 	px = MULTIPLIER;
@@ -49,7 +50,8 @@ static int	texture_info(char *type, t_tt *txt, t_data *game, char **map)
 			free_mtx(map);
 			error_handle(1, "Error with texture\n", game);
 		}
-		txt->addr = mlx_get_data_addr(txt->img, &txt->bpp, &txt->l_length, &txt->endian);
+		txt->addr = mlx_get_data_addr(txt->img,
+				&txt->bpp, &txt->l_length, &txt->endian);
 	}
 	return (0);
 }
@@ -60,7 +62,7 @@ int	add_texture(char *file, t_data *game, char **map)
 	char	start[3];
 
 	i = 0;
-	while(file[i] != '\n' && file[i] != '\0')
+	while (file[i] != '\n' && file[i] != '\0')
 	{
 		i += skip_spaces(file, start);
 		if (!ft_strncmp(start, "NO", 3) && !game->map.ntt.name)

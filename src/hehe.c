@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hehe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 12:03:33 by phanta            #+#    #+#             */
-/*   Updated: 2024/07/05 13:10:09 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/17 19:16:30 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ t_data	*data(void)
 	return (&data);
 }
 
-t_mapdata	*mapdata(void)
+void	set_data(t_data *game)
 {
-	static t_mapdata	mapdata;
+	t_data	**data_ptr;
 
-	return (&mapdata);
+	data_ptr = (t_data **)data();
+	*data_ptr = game;
 }

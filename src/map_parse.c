@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 19:36:11 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/16 19:03:04 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:39:19 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	find_player(char **map)
 	i = 0;
 	found = 0;
 	player = "NEWS";
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if (ft_strchr(player, map[i][j]))
 				found++;
@@ -43,7 +43,7 @@ static int	check_st_end(char **map)
 	int	k;
 
 	i = 0;
-	while(map && map[i])
+	while (map && map[i])
 	{
 		j = 0;
 		k = ft_strlen(map[i]);
@@ -75,7 +75,8 @@ static int	check_around_chr(char **map)
 			{
 				if (around_chr(map, i, j) != 4)
 					return (1);
-				else if (check_upanddown(map, i, j, 0) && check_upanddown(map, i, j, 1))
+				else if (check_upanddown(map, i, j, 0)
+					&& check_upanddown(map, i, j, 1))
 					return (1);
 			}
 			j++;
@@ -93,10 +94,10 @@ static int	check_each_line(char **map)
 
 	i = 0;
 	letters = "10NEWS\n";
-	while(map && map[i])
+	while (map && map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if (ft_strchr(letters, map[i][j] == 0))
 				return (1);
