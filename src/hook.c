@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:04:42 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/17 19:37:53 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:52:37 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	walk(int keycode)
 	if (keycode == 100)
 		data()->d = 1;
 	if (keycode == 65307)
-		error_handle(1, "Bye Bye!\n", data());
+		close_win();
 	if (keycode == 65361)
 		data()->rotation--;
 	if (keycode == 65363)

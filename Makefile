@@ -1,28 +1,30 @@
 NAME = cub3d
 
 SRC_DIR = src
-SRC = $(SRC_DIR)/main.c \
-	  $(SRC_DIR)/hehe.c \
+SRC = $(SRC_DIR)/calc_utils.c \
+	  $(SRC_DIR)/calc_utils2.c \
 	  $(SRC_DIR)/calculations.c \
 	  $(SRC_DIR)/error.c \
-	  $(SRC_DIR)/parser.c \
-	  $(SRC_DIR)/parser_utils.c \
 	  $(SRC_DIR)/gen_utils.c \
+	  $(SRC_DIR)/hehe.c \
+	  $(SRC_DIR)/hook.c \
+	  $(SRC_DIR)/main.c \
 	  $(SRC_DIR)/map_parse.c \
 	  $(SRC_DIR)/map_utils.c \
 	  $(SRC_DIR)/map.c \
 	  $(SRC_DIR)/mlx_diy.c \
+	  $(SRC_DIR)/parser_utils.c \
 	  $(SRC_DIR)/parser_utils2.c \
-	  $(SRC_DIR)/simulation.c \
-	  $(SRC_DIR)/calc_utils.c \
+	  $(SRC_DIR)/parser_utils3.c \
+	  $(SRC_DIR)/parser.c \
 	  $(SRC_DIR)/render.c \
-	  $(SRC_DIR)/hook.c \
 	  $(SRC_DIR)/rotations.c \
+	  $(SRC_DIR)/simulation.c \
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
-MLXFLAGS = -L. -lXext -L. -lX11 -lz -o3
+MLXFLAGS = -L. -lXext -L. -lX11 -lm -lz -o3
 
 LIBFT_PATH = ./inc/libft
 LIBFT = $(LIBFT_PATH)/libft.a

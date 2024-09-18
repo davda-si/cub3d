@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/17 19:43:37 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:25:12 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	drawray(int x, t_img tex)
 	int		texy;
 	int		texx;
 
+	texy = 0;
 	texx = (int)(data()->wallx * tex.x);
 	if (fabs(data()->perpwalldist) < 1e-6)
 	{
@@ -68,12 +69,13 @@ void	raycast_loop(void)
 	while (++x < RESW)
 	{
 		raycast_data(x);
+		setdist();
 		while (data()->hit == 0)
 			hitzero();
 		setline();
 		data()->wallx -= floor((data()->wallx));
 		settex(&tex);
-		drawRay(x, tex);
+		drawray(x, tex);
 	}
 	mlx_put_image_to_window(data()->mlx, data()->win,
 		data()->current_frame.img, 0, 0);

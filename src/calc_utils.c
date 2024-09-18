@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:08:10 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/17 17:10:49 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:15:46 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	timern(void)
 	return ((int)((time.tv_sec * 1000) + (time.tv_usec / 1000)));
 }
 
-char	check_borders(int mapx, int mapy)
+static char	check_borders(int mapx, int mapy)
 {
 	if (mapy < 0 || mapx < 0 || mapy >= data()->map.height
 		|| mapx >= (int)ft_strlen(data()->map.map[mapy]))
@@ -29,7 +29,7 @@ char	check_borders(int mapx, int mapy)
 	return (data()->map.map[mapy][mapx]);
 }
 
-void	set_pdata(int a, int b, int c, int d)
+void	set_pdata(int a, int b, double c, double d)
 {
 	data()->dir_x = a;
 	data()->dir_y = b;

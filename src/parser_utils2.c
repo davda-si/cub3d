@@ -6,13 +6,13 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/16 19:58:36 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/18 19:28:23 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-static int numb_check(char **rgb)
+static int	numb_check(char **rgb)
 {
 	int	i;
 	int	j;
@@ -20,7 +20,7 @@ static int numb_check(char **rgb)
 
 	i = 0;
 	fl = 0;
-	while(rgb[i] && fl < 3)
+	while (rgb[i])
 	{
 		j = 0;
 		while (rgb[i][j])
@@ -46,7 +46,7 @@ int	find_path(char *str, int i)
 		return (0);
 	while (str[i] && (str[i] == ' ' || str[i] == '\n'
 			|| (str[i] >= 9 && str[i] <= 13)))
-				i++;
+		i++;
 	return (i);
 }
 
@@ -63,9 +63,11 @@ int	color_info(char *file, t_mapdata *map, int fl)
 	if (numb_check(rgb))
 	{
 		if (fl)
-			map->fcolor = (ft_atoi(rgb[0]) << 16) + (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
+			map->fcolor = (ft_atoi(rgb[0]) << 16)
+				+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
 		else
-			map->ccolor = (ft_atoi(rgb[0]) << 16) + (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
+			map->ccolor = (ft_atoi(rgb[0]) << 16)
+				+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
 		free_mtx(rgb);
 	}
 	else
@@ -84,7 +86,7 @@ int	skip_spaces(char *file, char *start)
 	i = 0;
 	j = 0;
 	while (file[i] && (file[i] == ' ' || (file[i] >= 9 && file[i] <= 13)))
-				i++;
+		i++;
 	if (file[i])
 		start[j++] = file[i++];
 	if (file[i] && (file[i] != ' ' && file[i] != '\t'))
@@ -100,13 +102,17 @@ int	around_chr(char **map, int i, int j)
 	x = 0;
 	if (!map || !map[i])
 		return (x);
-	if ((j + 1) < (int)ft_strlen(map[i]) && map[i][j + 1] && ft_strchr("NEWS01", map[i][j + 1]))
+	if ((j + 1) < (int)ft_strlen(map[i]) && map[i][j + 1]
+		&& ft_strchr("NEWS01", map[i][j + 1]))
 		x++;
-	if (j > 0 && (j - 1) < (int)ft_strlen(map[i]) && map[i][j - 1] && ft_strchr("NEWS01", map[i][j - 1]))
+	if (j > 0 && (j - 1) < (int)ft_strlen(map[i])
+		&& map[i][j - 1] && ft_strchr("NEWS01", map[i][j - 1]))
 		x++;
-	if (j < (int)ft_strlen(map[i + 1]) && map[i + 1] && map[i + 1][j] && ft_strchr("NEWS01", map[i + 1][j]))
+	if (j < (int)ft_strlen(map[i + 1]) && map[i + 1]
+		&& map[i + 1][j] && ft_strchr("NEWS01", map[i + 1][j]))
 		x++;
-	if (i > 0 && j < (int)ft_strlen(map[i - 1]) && map[i - 1] && map[i - 1][j] && ft_strchr("NEWS01", map[i - 1][j]))
+	if (i > 0 && j < (int)ft_strlen(map[i - 1])
+		&& map[i - 1] && map[i - 1][j] && ft_strchr("NEWS01", map[i - 1][j]))
 		x++;
 	return (x);
 }

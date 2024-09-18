@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/17 19:15:47 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:51:47 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	free_text(t_data *game)
 		free(game->map.stt.name);
 }
 
-void	free_stuff(t_data *game)
+static void	free_stuff(t_data *game)
 {
 	if (!game)
 		return ;
@@ -64,6 +64,8 @@ void	free_stuff(t_data *game)
 		mlx_destroy_image(game->mlx, game->current_frame.img);
 	if (game->current_frame.addr)
 		free(game->current_frame.addr);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
 	{
 		mlx_destroy_display(game->mlx);
@@ -85,5 +87,3 @@ void	error_handle(int err, char *msg, t_data *game)
 		exit (1);
 	}
 }
-
-//mlx_destroy_window(game->mlx, game->win);
