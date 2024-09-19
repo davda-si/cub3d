@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:39:20 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/17 19:07:44 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:12:09 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,20 @@ void	setline(void)
 void	settex(t_img *tex)
 {
 	if (data()->side == 0 && data()->raydirx < 0)
-		tex = &data()->textures[0];
+		*tex = data()->textures[0];
 	else if (data()->side == 0 && data()->raydirx > 0)
-		tex = &data()->textures[1];
+		*tex = data()->textures[1];
 	else if (data()->side == 1 && data()->raydiry > 0)
-		tex = &data()->textures[2];
+		*tex = data()->textures[2];
 	else if (data()->side == 1 && data()->raydiry < 0)
-		tex = &data()->textures[3];
+		*tex = data()->textures[3];
 }
 
-void	drawst(int texy, int texx, int x, t_img tex)
+void	drawst(int texy, int texx, int x, t_img *tex)
 {
-	texy = (int)data()->texpos % (tex.y - 1);
+	texy = (int)data()->texpos % (tex->y - 1);
 	data()->texpos += data()->step;
-	data()->color = get_color(&tex, texx, texy);
+	data()->color = get_color(tex, texx, texy);
 	my_mlx_pixel_put(&(data()->current_frame), x, data()->drawstart++,
 		data()->color);
 }

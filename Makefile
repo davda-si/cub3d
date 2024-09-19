@@ -140,7 +140,7 @@ clean:
 	
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean -C $(LIBFT_PATH)
+	@make fclean -s -C $(LIBFT_PATH)
 	 $(MSG3)
 
 re: fclean all

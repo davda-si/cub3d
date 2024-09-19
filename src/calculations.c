@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/18 17:25:12 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:05:01 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	drawray(int x, t_img tex)
 	while (++i < data()->drawstart)
 		my_mlx_pixel_put(&(data()->current_frame), x, i, 0x87CEEB);
 	while (data()->drawstart <= data()->drawend)
-		drawst(texy, texx, x, tex);
+		drawst(texy, texx, x, &tex);
 	while (++data()->drawend < RESH)
 		my_mlx_pixel_put(&(data()->current_frame), x,
 			data()->drawend, 0x8ACE00);

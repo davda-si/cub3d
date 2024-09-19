@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:00:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/18 19:10:52 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:24:29 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	clear_file(int fd, char *file, t_data *game)
 	if (!game->map.ntt.img || !game->map.wtt.img || !game->map.ett.img
 		|| !game->map.stt.img || !game->map.fcolor || !game->map.ccolor)
 	{
-		printf("ntt-%p, wtt-%p, ett-%p, stt-%p, f-%d c%d\n",game->map.ntt.img, game->map.wtt.img, game->map.ett.img, game->map.stt.img, game->map.fcolor, game->map.ccolor);
 		free_mtx(cpy_file);
 		error_handle(1, "textures missing\n", game);
 	}
@@ -65,3 +64,7 @@ int	texttime(char *start, char **map, t_data *game, char *file)
 	else
 		return (-1);
 }
+
+//printf("ntt-%p, wtt-%p, ett-%p, stt-%p, f-%d c%d\n",game->map.ntt.img,
+//game->map.wtt.img, game->map.ett.img, game->map.stt.img, game->map.fcolor,
+//game->map.ccolor);

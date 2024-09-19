@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/18 19:28:30 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:01:07 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void			setdist(void);
 void			setline(void);
 void			hitzero(void);
 void			settex(t_img *tex);
-void			drawst(int texy, int texx, int x, t_img tex);
+void			drawst(int texy, int texx, int x, t_img *tex);
 void			raycast_loop(void);
 int				stop(int keycode);
 int				walk(int keycode);
