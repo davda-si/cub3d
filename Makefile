@@ -22,7 +22,7 @@ SRC = $(SRC_DIR)/calc_utils.c \
 	  $(SRC_DIR)/simulation.c \
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
 MLXFLAGS = -L. -lXext -L. -lX11 -lm -lz -o3
 

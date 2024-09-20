@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/19 18:45:29 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/20 22:25:20 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	start_game(void)
 
 int	main(int ac, char **av)
 {
-	t_data	game;
+	t_data	*game;
 
 	if (ac != 2)
 	{
@@ -56,15 +56,10 @@ int	main(int ac, char **av)
 		ft_putendl_fd("Invalid file name", 2);
 		exit (0);
 	}
-	ft_memset(&game, 0, (sizeof(t_data)));
-	set_data(&game);
-	game.mlx = mlx_init();
-	if (ac == 2)
-	{
-		check_file(av[1], &game);
-		*data() = game;
-		start_game();
-	}
-	error_handle(1, "acabou ta certo\n", &game);
+	game=data();
+	game->mlx = mlx_init();
+	check_file(av[1], game);
+	start_game();
+	error_handle(1, "acabou ta certo\n", game);
 	return (0);
 }

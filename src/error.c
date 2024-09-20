@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/18 17:51:47 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/20 23:08:59 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ static void	free_text(t_data *game)
 		mlx_destroy_image(game->mlx, game->map.stt.img);
 	if (game->map.stt.name)
 		free(game->map.stt.name);
+	mlx_destroy_image(game->mlx, game->textures[0].img);
+	mlx_destroy_image(game->mlx, game->textures[1].img);
+	mlx_destroy_image(game->mlx, game->textures[2].img);
+	mlx_destroy_image(game->mlx, game->textures[3].img);
+	free(game->textures);
+	
 }
 
 static void	free_stuff(t_data *game)
@@ -53,17 +59,11 @@ static void	free_stuff(t_data *game)
 		mlx_destroy_image(game->mlx, game->frame.img);
 	if (game->frame.name)
 		free(game->frame.name);
-	if (game->frame.addr)
-		free(game->frame.addr);
 	if (game->map.map)
 		free_mtx(game->map.map);
 	if (game->map.tmp)
 		free_mtx(game->map.tmp);
 	free_text(game);
-	if (game->current_frame.img)
-		mlx_destroy_image(game->mlx, game->current_frame.img);
-	if (game->current_frame.addr)
-		free(game->current_frame.addr);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
