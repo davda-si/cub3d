@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/21 10:21:03 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 19:17:17 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_win(void)
 {
-	error_handle(1, "Bye Bye\n", data());
+	//error_handle(1, "Bye Bye\n", data());
 	exit (0);
 }
 
@@ -60,6 +60,5 @@ int	main(int ac, char **av)
 	game->mlx = mlx_init();
 	check_file(av[1], game);
 	start_game();
-	error_handle(1, "acabou ta certo\n", game);
 	return (0);
 }

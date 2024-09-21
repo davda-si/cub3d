@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/21 10:36:22 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 17:44:05 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 # define RESW 1080
 # define RESH 720
-
-# define MULTIPLIER 64
 
 # define ROT_MULTIPLIER 3.0
 # define MOVE_SPEED_MULTIPLIER 5.0
@@ -117,6 +115,7 @@ void			set_data(t_data *game);
 void			error_handle(int err, char *msg, t_data *game);
 int				ft_strcmp(char *str1, char *str2);
 void			free_mtx(char **mtx);
+int				safeguard(int value, int flag);
 
 //parsing
 void			check_file(char *file, t_data *game);

@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/21 10:36:59 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 18:06:42 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static void	free_stuff(t_data *game)
 
 void	error_handle(int err, char *msg, t_data *game)
 {
+	printf("Error:\n");
 	if (err == 0)
 	{
 		ft_printf(msg);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:21:13 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/18 16:45:27 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/21 19:13:40 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	updates(void)
 	data()->time = timern();
 	frametime = (data()->time - data()->oldtime) / 1000.0;
 	data()->movespeed = frametime * MOVE_SPEED_MULTIPLIER;
+	if(data()->movespeed>0.7)
+		data()->movespeed=0.7;
 	data()->rotspeed = frametime * ROT_MULTIPLIER;
 }
 

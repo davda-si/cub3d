@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:39:20 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/20 23:01:27 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 19:47:13 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	setline(void)
 void	settex(t_img *tex)
 {
 	if (data()->side == 0 && data()->raydirx < 0)
-		*tex = data()->textures[0];
-	else if (data()->side == 0 && data()->raydirx > 0)
-		*tex = data()->textures[1];
-	else if (data()->side == 1 && data()->raydiry > 0)
-		*tex = data()->textures[2];
-	else if (data()->side == 1 && data()->raydiry < 0)
 		*tex = data()->textures[3];
+	else if (data()->side == 0 && data()->raydirx > 0)
+		*tex = data()->textures[2];
+	else if (data()->side == 1 && data()->raydiry > 0)
+		*tex = data()->textures[0];
+	else if (data()->side == 1 && data()->raydiry < 0)
+		*tex = data()->textures[1];
 }
 
 void	drawst(int texy, int texx, int x, t_img *tex)

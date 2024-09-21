@@ -18,11 +18,10 @@ SRC = $(SRC_DIR)/calc_utils.c \
 	  $(SRC_DIR)/parser_utils3.c \
 	  $(SRC_DIR)/parser.c \
 	  $(SRC_DIR)/render.c \
-	  $(SRC_DIR)/rotations.c \
-	  $(SRC_DIR)/simulation.c \
+	  $(SRC_DIR)/rotations.c 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 MLXFLAGS = -L. -lXext -L. -lX11 -lm -lz -o3
 
