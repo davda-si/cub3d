@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/17 19:40:04 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/21 09:53:02 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	allct_map(char **map, t_data *game)
 	game->map.map[i] = NULL;
 }
 
-void	init_texture(t_tt *txt)
+void	init_texture(t_img *txt)
 {
 	txt->img = NULL;
 	txt->name = NULL;
 	txt->addr = NULL;
-	txt->bpp = 0;
-	txt->l_length = 0;
+	txt->bits_per_pixel = 0;
+	txt->line_length = 0;
 	txt->endian = 0;
 }
 

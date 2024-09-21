@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/19 18:01:07 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/21 10:36:22 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@
 # define ROT_MULTIPLIER 3.0
 # define MOVE_SPEED_MULTIPLIER 5.0
 
-typedef struct s_tt
-{
-	void	*img;
-	char	*name;
-	char	*addr;
-	int		bpp;
-	int		l_length;
-	int		endian;
-	int		x;
-	int		y;
-}				t_tt;
+// typedef struct s_tt
+// {
+// 	void	*img;
+// 	char	*name;
+// 	char	*addr;
+// 	int		bpp;
+// 	int		l_length;
+// 	int		endian;
+// 	int		x;
+// 	int		y;
+// }				t_tt;
 
 typedef struct s_mapdata
 {
@@ -49,15 +49,12 @@ typedef struct s_mapdata
 	int			length;
 	int			fcolor;
 	int			ccolor;
-	t_tt		ntt;
-	t_tt		wtt;
-	t_tt		ett;
-	t_tt		stt;
 }				t_mapdata;
 
 typedef struct s_img
 {
 	void	*img;
+	char	*name;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -70,7 +67,6 @@ typedef struct s_data
 {
 	void			*mlx;
 	void			*win;
-	t_tt			frame;
 	t_mapdata		map;
 	double			pos_x;//player pos
 	double			pos_y;
@@ -112,7 +108,7 @@ typedef struct s_data
 	int				d;
 	unsigned int	color;
 	t_img			current_frame;
-	t_img			*textures;
+	t_img			textures[4];
 }				t_data;
 
 //general
@@ -135,10 +131,10 @@ int				read_map(char **file, char **map, t_data *game);
 void			allct_map(char **map, t_data *game);
 int				map_parse(t_mapdata *map);
 int				around_chr(char **map, int i, int j);
-void			init_texture(t_tt *txt);
+void			init_texture(t_img *txt);
 int				check_upanddown(char **map, int i, int j, int flag);
 void			clear_file(int fd, char *file, t_data *game);
-int				texture_info(char *type, t_tt *txt, t_data *game, char **map);
+int				texture_info(char *type, t_img *txt, t_data *game, char **map);
 int				texttime(char *start, char **map, t_data *game, char *file);
 char			**read_file(int fd, t_data *game, char *fl);
 int				check_textr(char **file, t_data *game);

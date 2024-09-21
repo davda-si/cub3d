@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/20 22:25:20 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 10:21:03 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static void	start_game(void)
 	//mlx_mouse_hide(data()->mlx, data()->win);
 	calculus(data()->map.map);
 	data()->rotation = 0;
-	data()->textures=(t_img *)malloc(sizeof(t_img)*4); //perceber se isto e o msm que as texturas que eu ja guardo
-	int i;
-	i=-1;
-	while(++i<4)
-	{
-		data()->textures[i].img = mlx_xpm_file_to_image(data()->mlx, "img/NO_OLIVES.xpm", &(data()->textures[i].x), &(data()->textures[i].y));
-		data()->textures[i].addr=mlx_get_data_addr(data()->textures[i].img, &(data()->textures[i].bits_per_pixel), &(data()->textures[i].line_length), &(data()->textures[i].endian));
-	}
-	printf("%p, %i, %i, %i, %i\n",data()->textures[0].addr, data()->textures[0].x, data()->textures[0].y, data()->textures[0].bits_per_pixel, data()->textures[0].endian);
+	//data()->textures=(t_img *)malloc(sizeof(t_img)*4); //perceber se isto e o msm que as texturas que eu ja guardo
+	// int i;
+	// i=-1;
+	// while(++i<4)
+	// {
+	// 	data()->textures[i].img = mlx_xpm_file_to_image(data()->mlx, "img/NO_OLIVES.xpm", &(data()->textures[i].x), &(data()->textures[i].y));
+	// 	data()->textures[i].addr=mlx_get_data_addr(data()->textures[i].img, &(data()->textures[i].bits_per_pixel), &(data()->textures[i].line_length), &(data()->textures[i].endian));
+	// }
+	// printf("%p, %i, %i, %i, %i\n",data()->textures[0].addr, data()->textures[0].x, data()->textures[0].y, data()->textures[0].bits_per_pixel, data()->textures[0].endian);
 	mlx_loop_hook(data()->mlx, &renderloop, NULL);
 	mlx_hook(data()->win, 02, (1L << 0), walk, NULL);
 	mlx_hook(data()->win, 03, (1L << 1), stop, NULL);

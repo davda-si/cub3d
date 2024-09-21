@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/20 23:05:09 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 09:56:45 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,17 @@ static int	text_exists(char *type, char **map, int pos, t_data *game)
 	return (1);
 }
 
-int	texture_info(char *type, t_tt *txt, t_data *game, char **map)
+int	texture_info(char *type, t_img *txt, t_data *game, char **map)
 {
 	int		pos;
-	int		px;
 	char	*clean_path;
 
-	px = MULTIPLIER;
 	pos = find_path(type, 3);
 	if (text_exists(type, map, pos, game))
 	{
 		clean_path = ft_strtrim(&type[pos], " \n\t");
 		txt->name = ft_strdup(clean_path);
-		txt->img = mlx_xpm_file_to_image(game->mlx, txt->name, &px, &px);
+		txt->img = mlx_xpm_file_to_image(game->mlx, txt->name, &(txt->x), &(txt->y));
 		free(clean_path);
 		if (!txt->img)
 		{
@@ -52,7 +50,7 @@ int	texture_info(char *type, t_tt *txt, t_data *game, char **map)
 			error_handle(1, "Error with texture\n", game);
 		}
 		txt->addr = mlx_get_data_addr(txt->img,
-				&txt->bpp, &txt->l_length, &txt->endian);
+				&txt->bits_per_pixel, &txt->line_length, &txt->endian);
 	}
 	return (0);
 }
