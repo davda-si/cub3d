@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/21 09:56:45 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 14:25:31 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	texture_info(char *type, t_img *txt, t_data *game, char **map)
 		free(clean_path);
 		if (!txt->img)
 		{
-			free(clean_path);
 			free_mtx(map);
 			error_handle(1, "Error with texture\n", game);
 		}

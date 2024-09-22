@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:39:20 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/20 23:01:27 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/22 18:52:37 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,17 @@ void	setline(void)
 	else
 		data()->wallx = data()->pos_x + data()->perpwalldist * data()->raydirx;
 }
-
-void	settex(t_img *tex)
+//EWSN
+void	settex(t_img *tex, t_img textures[])
 {
 	if (data()->side == 0 && data()->raydirx < 0)
-		*tex = data()->textures[0];
+		*tex = textures[3];
 	else if (data()->side == 0 && data()->raydirx > 0)
-		*tex = data()->textures[1];
+		*tex = textures[1];
 	else if (data()->side == 1 && data()->raydiry > 0)
-		*tex = data()->textures[2];
+		*tex = textures[2];
 	else if (data()->side == 1 && data()->raydiry < 0)
-		*tex = data()->textures[3];
+		*tex = textures[0];
 }
 
 void	drawst(int texy, int texx, int x, t_img *tex)

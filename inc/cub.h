@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/21 10:36:22 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/22 18:22:37 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 # define RESW 1080
 # define RESH 720
-
-# define MULTIPLIER 64
 
 # define ROT_MULTIPLIER 3.0
 # define MOVE_SPEED_MULTIPLIER 5.0
@@ -109,6 +107,9 @@ typedef struct s_data
 	unsigned int	color;
 	t_img			current_frame;
 	t_img			textures[4];
+	int				first;
+	t_img 			created_texture[4];
+	t_img 			last_created_textures[4];
 }				t_data;
 
 //general
@@ -117,6 +118,7 @@ void			set_data(t_data *game);
 void			error_handle(int err, char *msg, t_data *game);
 int				ft_strcmp(char *str1, char *str2);
 void			free_mtx(char **mtx);
+int				safeguard(int value, int flag);
 
 //parsing
 void			check_file(char *file, t_data *game);
@@ -140,7 +142,7 @@ char			**read_file(int fd, t_data *game, char *fl);
 int				check_textr(char **file, t_data *game);
 int				check_map(char **line, t_data *game);
 
-//raytracing
+//raycasting
 void			calculus(char **map);
 void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
 unsigned int	get_color(t_img *image, int x, int y);
@@ -150,9 +152,9 @@ void			raycast_data(int x);
 void			setdist(void);
 void			setline(void);
 void			hitzero(void);
-void			settex(t_img *tex);
+void			settex(t_img *tex, t_img textures[]);
 void			drawst(int texy, int texx, int x, t_img *tex);
-void			raycast_loop(void);
+t_img	raycast_loop(t_img textures[]);
 int				stop(int keycode);
 int				walk(int keycode);
 void			do_walk(void);
@@ -161,5 +163,7 @@ void			rotate_vector(double *x, double *y, double radians);
 void			do_rotate(void);
 void			camera(void);
 int				close_win(void);
+void	rotate(double radians);
+void	free_stuff(t_data *game);
 
 #endif

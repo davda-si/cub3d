@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/19 19:05:01 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:31:12 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	drawray(int x, t_img tex)
 			data()->drawend, 0x8ACE00);
 }
 
-void	raycast_loop(void)
+t_img	raycast_loop(t_img textures[])
 {
 	t_img	img;
 	t_img	tex;
@@ -65,6 +65,8 @@ void	raycast_loop(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	data()->current_frame = img;
+	data()->current_frame.x = RESW;
+	data()->current_frame.y = RESH;
 	x = -1;
 	while (++x < RESW)
 	{
@@ -74,12 +76,10 @@ void	raycast_loop(void)
 			hitzero();
 		setline();
 		data()->wallx -= floor((data()->wallx));
-		settex(&tex);
+		settex(&tex, textures);
 		drawray(x, tex);
 	}
-	mlx_put_image_to_window(data()->mlx, data()->win,
-		data()->current_frame.img, 0, 0);
-	mlx_destroy_image(data()->mlx, data()->current_frame.img);
+	return(data()->current_frame);
 }
 
 void	calculus(char **map)
@@ -95,11 +95,7 @@ void	calculus(char **map)
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 			|| map[i][j] == 'E' || map[i][j] == 'W')
-			{
 				setplayer(map[i][j], i, j);
-				printf("----------------------\ni=%i, j=%i\n", i, j);
-				printf("---------------------------\n");
-			}
 			j++;
 		}
 		j = 0;

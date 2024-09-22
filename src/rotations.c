@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:40:43 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/18 16:49:40 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/22 17:22:06 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	rotate_vector(double *x, double *y, double radians)
 	*y = newy_y;
 }
 
-static void	rotate(double radians)
+void	rotate(double radians)
 {
 	rotate_vector(&(data()->dir_x), &(data()->dir_y), radians);
 	rotate_vector(&(data()->plane_x), &(data()->plane_y), radians);

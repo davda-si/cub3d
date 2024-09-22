@@ -6,11 +6,29 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/21 09:53:02 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/21 19:18:26 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+void print_matrix(char **map)
+{
+    int i;
+    int j;
+    
+    i=-1;
+    if(!map)
+        printf("mata-te\n");
+    while(map[++i])
+    {
+        j=-1;
+        while (map[i][++j])
+            printf("%c ", map[i][j]);
+        printf("\n");
+    }
+    printf("i=%i, j=%i\n", i, j);
+}
 
 void	allct_map(char **map, t_data *game)
 {
@@ -21,7 +39,7 @@ void	allct_map(char **map, t_data *game)
 	i = 0;
 	start = game->map.map_start;
 	end = game->map.map_end;
-	game->map.map = malloc(sizeof(char **) * (end - start + 1));
+	game->map.map = malloc(sizeof(char *) * (end - start + 1));
 	if (!game->map.map)
 	{
 		free_mtx(map);
@@ -35,6 +53,7 @@ void	allct_map(char **map, t_data *game)
 	}
 	game->map.height = i;
 	game->map.map[i] = NULL;
+	//print_matrix(game->map.map);
 }
 
 void	init_texture(t_img *txt)

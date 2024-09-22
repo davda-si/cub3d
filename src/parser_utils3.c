@@ -6,7 +6,7 @@
 /*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:00:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/21 10:19:25 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/22 17:47:46 by phanta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ int	texttime(char *start, char **map, t_data *game, char *file)
 		init_texture(&game->textures[0]);
 		return (texture_info(file, &game->textures[0], game, map));
 	}
-	else if (!ft_strcmp(start, "SO") && !game->textures[1].name)
+	else if (!ft_strcmp(start, "SO") && !game->textures[2].name)
 	{
 		printf("start-%s\n", start);
-		init_texture(&game->textures[1]);
-		return (texture_info(file, &game->textures[1], game, map));
-	}
-	else if (!ft_strcmp(start, "WE") && !game->textures[2].name)
-	{
 		init_texture(&game->textures[2]);
 		return (texture_info(file, &game->textures[2], game, map));
+	}
+	else if (!ft_strcmp(start, "WE") && !game->textures[1].name)
+	{
+		init_texture(&game->textures[1]);
+		return (texture_info(file, &game->textures[1], game, map));
 	}
 	else if (!ft_strcmp(start, "EA") && !game->textures[3].name)
 	{
