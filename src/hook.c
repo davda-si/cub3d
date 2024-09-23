@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:04:42 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/21 19:14:56 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 19:02:09 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,18 @@ void	do_walk(void)
 	{
 		if (data()->map.map[(int)(data()->pos_y)][(int)(data()->pos_x
 		+ data()->dir_x * data()->movespeed)] != '1')
+		{
 			data()->pos_x += data()->dir_x * data()->movespeed;
+			printf("moved from pos_x=%i to after x=%i\n", (int)(data()->pos_x), (int)(data()->pos_x
+		+ data()->dir_x * data()->movespeed));
+		}
 		if (data()->map.map[(int)(data()->pos_y + data()->dir_y
 				* data()->movespeed)][(int)(data()->pos_x)] != '1')
+		{
 			data()->pos_y += data()->dir_y * data()->movespeed;
+			printf("moved from pos_y=%i, to after_y=%i\n", (int)(data()->pos_y), (int)(data()->pos_y + data()->dir_y
+				* data()->movespeed));
+		}
 	}
 	if (data()->a == 1)
 	{

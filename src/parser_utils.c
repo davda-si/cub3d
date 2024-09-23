@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/21 14:25:31 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 21:32:39 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	texture_info(char *type, t_img *txt, t_data *game, char **map)
 	int		pos;
 	char	*clean_path;
 
-	pos = find_path(type, 3);
+	pos = find_path(type);
 	if (text_exists(type, map, pos, game))
 	{
 		clean_path = ft_strtrim(&type[pos], " \n\t");
@@ -57,10 +57,11 @@ int	texture_info(char *type, t_img *txt, t_data *game, char **map)
 int	add_texture(char *file, t_data *game, char **map)
 {
 	int		i;
-	char	start[3];
+	char	start[4];
 
-	i = 0;
-	while (file[i] != '\n' && file[i] != '\0')
+	i = -1;
+	init_start(start);
+	while (file[++i] != '\n' && file[i] != '\0')
 	{
 		i += skip_spaces(file, start);
 		if (texttime(start, map, game, file) == 0)
@@ -74,7 +75,6 @@ int	add_texture(char *file, t_data *game, char **map)
 			else
 				return (-1);
 		}
-		i++;
 		while (file[i] != '\n' && file[i] != '\0')
 			i++;
 		if (file[i] == '\n')
@@ -85,9 +85,11 @@ int	add_texture(char *file, t_data *game, char **map)
 
 int	check_line(char *file)
 {
-	char	start[3];
+	char	start[4];
 
+	init_start(start);
 	skip_spaces(file, start);
+	printf("file = %s\nstart = %s\n", file, start);
 	if (!ft_strncmp(start, "NO", 3) || !ft_strncmp(start, "SO", 3)
 		|| !ft_strncmp(start, "WE", 3) || !ft_strncmp(start, "EA", 3))
 		return (0);

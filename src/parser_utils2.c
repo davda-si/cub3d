@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/18 19:28:23 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:11:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,18 @@ static int	numb_check(char **rgb)
 	return (1);
 }
 
-int	find_path(char *str, int i)
+int	find_path(char *str)
 {
+	int	i;
+
+	i = 0;
 	if (!str || !str[i])
 		return (0);
 	while (str[i] && (str[i] == ' ' || str[i] == '\n'
 			|| (str[i] >= 9 && str[i] <= 13)))
+		i++;
+	while (str[i] && (str[i] != ' ' && str[i] != '\n'
+			&& !(str[i] >= 9 && str[i] <= 13)))
 		i++;
 	return (i);
 }
@@ -56,7 +62,7 @@ int	color_info(char *file, t_mapdata *map, int fl)
 	char	**rgb;
 	char	*clean_path;
 
-	pos = find_path(file, 2);
+	pos = find_path(file);
 	clean_path = ft_strtrim(&file[pos], " \n\t");
 	rgb = ft_split(clean_path, ',');
 	free(clean_path);
@@ -87,11 +93,19 @@ int	skip_spaces(char *file, char *start)
 	j = 0;
 	while (file[i] && (file[i] == ' ' || (file[i] >= 9 && file[i] <= 13)))
 		i++;
-	if (file[i])
-		start[j++] = file[i++];
-	if (file[i] && (file[i] != ' ' && file[i] != '\t'))
-		start[j++] = file[i++];
-	start[j] = '\0';
+	while (file[i] && j < 3)
+	{
+		start[j] = file[i];
+		if (file[i] && (file[i] == ' ' || (file[i] >= 9 && file[i] <= 13)))
+		{
+			while (j < 3)
+				start[j++] = '\0';
+			break ;
+		}
+		j++;
+		i++;
+	}
+	start[3] = '\0';
 	return (i);
 }
 
@@ -99,20 +113,31 @@ int	around_chr(char **map, int i, int j)
 {
 	int	x;
 
-	x = 0;
+	x = 4;
 	if (!map || !map[i])
-		return (x);
-	if ((j + 1) < (int)ft_strlen(map[i]) && map[i][j + 1]
-		&& ft_strchr("NEWS01", map[i][j + 1]))
-		x++;
-	if (j > 0 && (j - 1) < (int)ft_strlen(map[i])
-		&& map[i][j - 1] && ft_strchr("NEWS01", map[i][j - 1]))
-		x++;
-	if (j < (int)ft_strlen(map[i + 1]) && map[i + 1]
-		&& map[i + 1][j] && ft_strchr("NEWS01", map[i + 1][j]))
-		x++;
-	if (i > 0 && j < (int)ft_strlen(map[i - 1])
-		&& map[i - 1] && map[i - 1][j] && ft_strchr("NEWS01", map[i - 1][j]))
-		x++;
+		return (0);
+	if ((i - 1) < 0 || (j - 1) < 0)
+		return (0);
+	if ((j + 1) >= (int)cb_strlen(map[i]) || i + 1 >= data()->map.height)
+		return (0);
+	if (j >= (int)cb_strlen(map[i + 1]) || j >= (int)cb_strlen(map[i - 1]))
+		return (0);
+	if (ft_strchr("01NEWS", map[i][j + 1]) == NULL || ft_strchr("01NEWS", map[i][j - 1]) == NULL)
+		return (0);
+	if (ft_strchr("01NEWS", map[i + 1][j]) == NULL || ft_strchr("01NEWS", map[i - 1][j]) == NULL)
+		return (0);
 	return (x);
 }
+
+/* checka()
+{
+
+	while(4)
+		i j
+		funcao que checka(i, j)		
+	if(i <0 || j<0)
+		return(mau)
+	if(i>height-1 || j>length(i))
+		return(mau)
+	if(ft_strchr("01NEWS"))
+} */

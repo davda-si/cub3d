@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 15:21:13 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/22 19:06:39 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 20:06:41 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int	renderloop(void)
 	camera();
 	do_rotate();
 	do_walk();
-	//normal_render();
-	freaky_render();
+	normal_render();
+	//freaky_render();
 	//freakier_render();
 	updates();
 	return (0);

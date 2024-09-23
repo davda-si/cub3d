@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:00:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/22 17:47:46 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 21:33:03 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	texttime(char *start, char **map, t_data *game, char *file)
 	}
 	else if (!ft_strcmp(start, "SO") && !game->textures[2].name)
 	{
-		printf("start-%s\n", start);
 		init_texture(&game->textures[2]);
 		return (texture_info(file, &game->textures[2], game, map));
 	}
@@ -65,6 +64,17 @@ int	texttime(char *start, char **map, t_data *game, char *file)
 		return (-1);
 }
 
+void	init_start(char *start)
+{
+	int	i;
+
+	i = 0;
+	while(i < 4)
+	{
+		start[i] = '\0';
+		i++;
+	}
+}
 //printf("ntt-%p, wtt-%p, ett-%p, stt-%p, f-%d c%d\n",game->map.ntt.img,
 //game->map.wtt.img, game->map.ett.img, game->map.stt.img, game->map.fcolor,
 //game->map.ccolor);

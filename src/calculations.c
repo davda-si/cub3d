@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/22 18:31:12 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 21:43:05 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ static void	drawray(int x, t_img tex)
 	}
 	i = -1;
 	while (++i < data()->drawstart)
-		my_mlx_pixel_put(&(data()->current_frame), x, i, 0x87CEEB);
+		my_mlx_pixel_put(&(data()->current_frame), x, i, data()->map.ccolor);
 	while (data()->drawstart <= data()->drawend)
 		drawst(texy, texx, x, &tex);
 	while (++data()->drawend < RESH)
 		my_mlx_pixel_put(&(data()->current_frame), x,
-			data()->drawend, 0x8ACE00);
+			data()->drawend, data()->map.fcolor);
 }
 
 t_img	raycast_loop(t_img textures[])

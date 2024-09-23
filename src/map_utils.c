@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/21 19:18:26 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 17:51:08 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	allct_map(char **map, t_data *game)
 	}
 	game->map.height = i;
 	game->map.map[i] = NULL;
-	//print_matrix(game->map.map);
 }
 
 void	init_texture(t_img *txt)

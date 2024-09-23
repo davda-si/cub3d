@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/22 18:22:37 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/23 21:32:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,18 @@ typedef struct s_data
 //general
 t_data			*data(void);
 void			set_data(t_data *game);
+size_t			cb_strlen(const char *s);
 void			error_handle(int err, char *msg, t_data *game);
 int				ft_strcmp(char *str1, char *str2);
 void			free_mtx(char **mtx);
 int				safeguard(int value, int flag);
+void			free_stuff(t_data *game);
 
 //parsing
 void			check_file(char *file, t_data *game);
 int				check_line(char *file);
 int				check_str(char *str);
-int				find_path(char *str, int i);
+int				find_path(char *str);
 int				add_texture(char *file, t_data *game, char **map);
 int				color_info(char *file, t_mapdata *map, int fl);
 int				skip_spaces(char *file, char *start);
@@ -141,6 +143,7 @@ int				texttime(char *start, char **map, t_data *game, char *file);
 char			**read_file(int fd, t_data *game, char *fl);
 int				check_textr(char **file, t_data *game);
 int				check_map(char **line, t_data *game);
+void			init_start(char *start);
 
 //raycasting
 void			calculus(char **map);
@@ -154,7 +157,7 @@ void			setline(void);
 void			hitzero(void);
 void			settex(t_img *tex, t_img textures[]);
 void			drawst(int texy, int texx, int x, t_img *tex);
-t_img	raycast_loop(t_img textures[]);
+t_img			raycast_loop(t_img textures[]);
 int				stop(int keycode);
 int				walk(int keycode);
 void			do_walk(void);
@@ -163,7 +166,6 @@ void			rotate_vector(double *x, double *y, double radians);
 void			do_rotate(void);
 void			camera(void);
 int				close_win(void);
-void	rotate(double radians);
-void	free_stuff(t_data *game);
+void			rotate(double radians);
 
 #endif
