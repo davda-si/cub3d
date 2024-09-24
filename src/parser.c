@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/24 16:33:40 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:48:52 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	check_textr(char **file, t_data *game)
 	int	err;
 
 	flag = 0;
-	i = 0;
+	i = -1;
 	err = 0;
-	while (file[i] && (err == 0))
+	while (file[++i] && err == 0 && flag != 6)
 	{
 		if (!(check_line(file[i])))
 		{
@@ -30,8 +30,7 @@ int	check_textr(char **file, t_data *game)
 			flag++;
 		}
 		else if (has_spaces(file[i]))
-			break ;
-		i++;
+			return (1);
 	}
 	if (flag != 6 || err == 1)
 		return (1);
@@ -43,9 +42,7 @@ int	check_map(char **line, t_data *game)
 {
 	int	i;
 
-	i = game->map.after_txtr;
-	while (line[i] && !map_start(line[i]))
-		i++;
+	i = jump_spaces(line, game);
 	if (!line[i])
 	{
 		free_mtx(line);

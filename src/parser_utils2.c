@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/24 14:46:03 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:00:09 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ int	color_info(char *file, t_mapdata *map, int fl)
 
 	pos = find_path(file);
 	clean_path = ft_strtrim(&file[pos], " \n\t");
+	if (count_commas(clean_path) != 2)
+	{
+		free(clean_path);
+		return (1);
+	}
 	rgb = ft_split(clean_path, ',');
 	free(clean_path);
 	if (numb_check(rgb))
 	{
-		if (fl)
-			map->fcolor = (ft_atoi(rgb[0]) << 16)
-				+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
-		else
-			map->ccolor = (ft_atoi(rgb[0]) << 16)
-				+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
+		floor_ceiling(rgb, fl, map);
 		free_mtx(rgb);
 	}
 	else

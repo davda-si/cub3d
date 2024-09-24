@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:00:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/24 17:17:23 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:48:39 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,20 @@ int	has_spaces(char *line)
 		i++;
 	}
 	return (f);
+}
+
+int	jump_spaces(char **line, t_data *game)
+{
+	int	i;
+
+	i = game->map.after_txtr;
+	while (line[i] && !map_start(line[i]))
+	{
+		if (has_spaces(line[i++]))
+		{
+			free_mtx(line);
+			error_handle(1, "Invalid file\n", game);
+		}
+	}
+	return (i);
 }

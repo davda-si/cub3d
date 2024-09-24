@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 17:32:38 by guest             #+#    #+#             */
-/*   Updated: 2024/09/24 14:42:21 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:57:13 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strcmp(char *str1, char *str2)
 	return (str1[i] - str2[i]);
 }
 
-int	safeguard(int value, int flag)//0=x, 1=y
+int	safeguard(int value, int flag)
 {
 	if (value < 0)
 		return (0);
@@ -46,4 +46,30 @@ size_t	cb_strlen(const char *s)
 		a++;
 	}
 	return (a);
+}
+
+int	count_commas(char *line)
+{
+	int	i;
+	int	f;
+
+	i = 0;
+	f = 0;
+	while (line[i])
+	{
+		if (line[i] == ',')
+			f++;
+		i++;
+	}
+	return (f);
+}
+
+void	floor_ceiling(char **rgb, int fl, t_mapdata *map)
+{
+	if (fl)
+		map->fcolor = (ft_atoi(rgb[0]) << 16)
+			+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
+	else
+		map->ccolor = (ft_atoi(rgb[0]) << 16)
+			+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
 }

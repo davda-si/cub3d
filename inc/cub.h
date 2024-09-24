@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/24 16:18:28 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:58:09 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,9 @@ int				check_textr(char **file, t_data *game);
 int				check_map(char **line, t_data *game);
 void			init_start(char *start);
 int				has_spaces(char *line);
+int				jump_spaces(char **line, t_data *game);
+void			floor_ceiling(char **rgb, int fl, t_mapdata *map);
+int				count_commas(char *line);
 
 //raycasting
 void			calculus(char **map);
