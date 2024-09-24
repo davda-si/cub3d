@@ -90,9 +90,12 @@ int	renderloop(void)
 	camera();
 	do_rotate();
 	do_walk();
-	normal_render();
-	//freaky_render();
-	//freakier_render();
+	if(data()->toggle==0)
+		normal_render();
+	if(data()->toggle==1)
+		freaky_render();
+	if(data()->toggle==2)
+		freakier_render();
 	updates();
 	return (0);
 }

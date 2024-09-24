@@ -27,6 +27,7 @@ static void	start_game(void)
 	calculus(data()->map.map);
 	data()->rotation = 0;
 	data()->first=1;
+	data()->toggle=0;
 	mlx_loop_hook(data()->mlx, &renderloop, NULL);
 	mlx_hook(data()->win, 02, (1L << 0), walk, NULL);
 	mlx_hook(data()->win, 03, (1L << 1), stop, NULL);

@@ -43,18 +43,10 @@ void	do_walk(void)
 	{
 		if (data()->map.map[(int)(data()->pos_y)][(int)(data()->pos_x
 		+ data()->dir_x * data()->movespeed)] != '1')
-		{
 			data()->pos_x += data()->dir_x * data()->movespeed;
-			printf("moved from pos_x=%i to after x=%i\n", (int)(data()->pos_x), (int)(data()->pos_x
-		+ data()->dir_x * data()->movespeed));
-		}
 		if (data()->map.map[(int)(data()->pos_y + data()->dir_y
 				* data()->movespeed)][(int)(data()->pos_x)] != '1')
-		{
 			data()->pos_y += data()->dir_y * data()->movespeed;
-			printf("moved from pos_y=%i, to after_y=%i\n", (int)(data()->pos_y), (int)(data()->pos_y + data()->dir_y
-				* data()->movespeed));
-		}
 	}
 	if (data()->a == 1)
 	{
@@ -84,6 +76,13 @@ int	walk(int keycode)
 		data()->rotation--;
 	if (keycode == 65363)
 		data()->rotation++;
+	if(keycode == 116)
+	{
+		if(data()->toggle==2)
+			data()->toggle=0;
+		else
+			data()->toggle++;
+	}
 	return (0);
 }
 

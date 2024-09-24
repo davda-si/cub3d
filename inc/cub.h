@@ -110,6 +110,7 @@ typedef struct s_data
 	int				first;
 	t_img 			created_texture[4];
 	t_img 			last_created_textures[4];
+	int				toggle;
 }				t_data;
 
 //general
