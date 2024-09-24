@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 19:04:42 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/23 19:02:09 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:31:05 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,6 @@ int	walk(int keycode)
 		data()->rotation--;
 	if (keycode == 65363)
 		data()->rotation++;
-	if(keycode == 116)
-	{
-		if(data()->toggle==2)
-			data()->toggle=0;
-		else
-			data()->toggle++;
-	}
 	return (0);
 }
 

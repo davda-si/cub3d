@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:08:10 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/18 17:15:46 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:53:30 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,3 @@ void	hitzero(void)
 	if (check_borders(data()->mapx, data()->mapy) == '1')
 		data()->hit = 1;
 }
-	//N:
-	//data()->dirX=0;
-	//data()->dirY=-1;
-	//data()->planeX=0.66;//not scalable, change
-	//data()->planeY=0;
-	//S:
-	//data()->dirX=0;
-	//data()->dirY=1;
-	//data()->planeX=-0.66;
-	// data()->planeY=0;
-	//E:
-	//data()->dirX=1;
-	//data()->dirY=0;
-	//data()->planeX=0;
-	//data()->planeY=0.66;
-	//W:
-	//data()->dirX=-1;
-	//data()->dirY=0;
-	//data()->planeX=0;
-	//data()->planeY=-0.66;
-	//printf("mapY=%i, mapX=%i\n", mapY, mapX);

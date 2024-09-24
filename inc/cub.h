@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:21:55 by david             #+#    #+#             */
-/*   Updated: 2024/09/23 21:32:04 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:18:28 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ typedef struct s_data
 	t_img			current_frame;
 	t_img			textures[4];
 	int				first;
-	t_img 			created_texture[4];
-	t_img 			last_created_textures[4];
+	t_img			created_texture[4];
+	t_img			last_crtd_txts[4];
 	int				toggle;
 }				t_data;
 
@@ -145,6 +145,7 @@ char			**read_file(int fd, t_data *game, char *fl);
 int				check_textr(char **file, t_data *game);
 int				check_map(char **line, t_data *game);
 void			init_start(char *start);
+int				has_spaces(char *line);
 
 //raycasting
 void			calculus(char **map);

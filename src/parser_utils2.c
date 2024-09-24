@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:57:35 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/23 21:11:04 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:46:03 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,22 +122,11 @@ int	around_chr(char **map, int i, int j)
 		return (0);
 	if (j >= (int)cb_strlen(map[i + 1]) || j >= (int)cb_strlen(map[i - 1]))
 		return (0);
-	if (ft_strchr("01NEWS", map[i][j + 1]) == NULL || ft_strchr("01NEWS", map[i][j - 1]) == NULL)
+	if (ft_strchr("01NEWS", map[i][j + 1]) == NULL
+		|| ft_strchr("01NEWS", map[i][j - 1]) == NULL)
 		return (0);
-	if (ft_strchr("01NEWS", map[i + 1][j]) == NULL || ft_strchr("01NEWS", map[i - 1][j]) == NULL)
+	if (ft_strchr("01NEWS", map[i + 1][j]) == NULL
+		|| ft_strchr("01NEWS", map[i - 1][j]) == NULL)
 		return (0);
 	return (x);
 }
-
-/* checka()
-{
-
-	while(4)
-		i j
-		funcao que checka(i, j)		
-	if(i <0 || j<0)
-		return(mau)
-	if(i>height-1 || j>length(i))
-		return(mau)
-	if(ft_strchr("01NEWS"))
-} */

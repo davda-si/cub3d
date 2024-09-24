@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/23 21:32:39 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:35:24 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ static int	text_exists(char *type, char **map, int pos, t_data *game)
 	char	*clean_path;
 
 	clean_path = ft_strtrim(&type[pos], " \n\t");
+	if (ft_strnstr(clean_path + ft_strlen(clean_path) - 4,
+			".xpm", ft_strlen(clean_path)) == NULL)
+	{
+		free(clean_path);
+		free_mtx(map);
+		error_handle(1, "Path of texture invalid\n", game);
+	}
 	fd = open(clean_path, O_RDONLY);
-	printf("clean - %s\n", clean_path);
 	if (fd == -1)
 	{
 		free(clean_path);
@@ -41,7 +47,8 @@ int	texture_info(char *type, t_img *txt, t_data *game, char **map)
 	{
 		clean_path = ft_strtrim(&type[pos], " \n\t");
 		txt->name = ft_strdup(clean_path);
-		txt->img = mlx_xpm_file_to_image(game->mlx, txt->name, &(txt->x), &(txt->y));
+		txt->img = mlx_xpm_file_to_image(game->mlx, txt->name, &(txt->x),
+				&(txt->y));
 		free(clean_path);
 		if (!txt->img)
 		{
@@ -89,7 +96,6 @@ int	check_line(char *file)
 
 	init_start(start);
 	skip_spaces(file, start);
-	printf("file = %s\nstart = %s\n", file, start);
 	if (!ft_strncmp(start, "NO", 3) || !ft_strncmp(start, "SO", 3)
 		|| !ft_strncmp(start, "WE", 3) || !ft_strncmp(start, "EA", 3))
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:39:20 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/22 18:52:37 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/24 14:40:46 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	setline(void)
 	else
 		data()->wallx = data()->pos_x + data()->perpwalldist * data()->raydirx;
 }
-//EWSN
+
 void	settex(t_img *tex, t_img textures[])
 {
 	if (data()->side == 0 && data()->raydirx < 0)

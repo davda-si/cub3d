@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:30:30 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/23 21:43:05 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:53:20 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_img	raycast_loop(t_img textures[])
 		settex(&tex, textures);
 		drawray(x, tex);
 	}
-	return(data()->current_frame);
+	return (data()->current_frame);
 }
 
 void	calculus(char **map)
@@ -104,16 +104,3 @@ void	calculus(char **map)
 	data()->time = timern();
 	data()->oldtime = timern();
 }
-
-//prints do raycastloop()
-//printf("raydirX=%f, raydirY=%f\n",rayDirX, rayDirY);
-//printf("---------x=%i--------rayDirX=%f, rayDirY=%f--------\n\n",
-//x, rayDirX, rayDirY);
-//printf("sideDistX=%f, sideDistY=%f\n\n", sideDistX, sideDistY);
-//printf("MAP X=%i, MAP Y=%i, content=%c\n\n\n\n",
-//mapX, mapY, data()->map->map[mapY][mapX]);
-//printf("side=%i, raydirX=%f, raydirY=%f\n",side, rayDirX, rayDirY);
-// if (side == 0)
-//color = (color & 0xfefefe) >> 1;
-//printf("data()->perpWallDist=%f, start=%i, end=%i, lineHeight=%i\n\n",
-// data()->perpWallDist, drawStart, drawEnd, lineHeight);

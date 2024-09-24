@@ -6,28 +6,28 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:46:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/23 17:51:08 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 14:45:04 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
-void print_matrix(char **map)
+void	print_matrix(char **map)
 {
-    int i;
-    int j;
-    
-    i=-1;
-    if(!map)
-        printf("mata-te\n");
-    while(map[++i])
-    {
-        j=-1;
-        while (map[i][++j])
-            printf("%c ", map[i][j]);
-        printf("\n");
-    }
-    printf("i=%i, j=%i\n", i, j);
+	int	i;
+	int	j;
+
+	i = -1;
+	if (!map)
+		printf("ups\n");
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+			printf("%c ", map[i][j]);
+		printf("\n");
+	}
+	printf("i=%i, j=%i\n", i, j);
 }
 
 void	allct_map(char **map, t_data *game)

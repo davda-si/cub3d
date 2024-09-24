@@ -21,7 +21,7 @@ SRC = $(SRC_DIR)/calc_utils.c \
 	  $(SRC_DIR)/rotations.c 
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address 
 
 MLXFLAGS = -L. -lXext -L. -lX11 -lm -lz -o3
 

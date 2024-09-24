@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:00:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/23 21:33:03 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:17:23 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	clear_file(int fd, char *file, t_data *game)
 		free_mtx(cpy_file);
 		error_handle(1, "textures don't work\n", game);
 	}
-	if (!game->textures[0].img || !game->textures[1].img || !game->textures[2].img
+	if (!game->textures[0].img || !game->textures[1].img
+		|| !game->textures[2].img
 		|| !game->textures[3].img || !game->map.fcolor || !game->map.ccolor)
 	{
 		free_mtx(cpy_file);
@@ -69,12 +70,25 @@ void	init_start(char *start)
 	int	i;
 
 	i = 0;
-	while(i < 4)
+	while (i < 4)
 	{
 		start[i] = '\0';
 		i++;
 	}
 }
-//printf("ntt-%p, wtt-%p, ett-%p, stt-%p, f-%d c%d\n",game->map.ntt.img,
-//game->map.wtt.img, game->map.ett.img, game->map.stt.img, game->map.fcolor,
-//game->map.ccolor);
+
+int	has_spaces(char *line)
+{
+	int	i;
+	int	f;
+
+	i = 0;
+	f = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && !(line[i] >= 9 && line[i] <= 13))
+			f = 1;
+		i++;
+	}
+	return (f);
+}

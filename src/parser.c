@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/23 21:40:09 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:33:40 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_textr(char **file, t_data *game)
 	flag = 0;
 	i = 0;
 	err = 0;
-	while (file[i] && !map_start(file[i]) && (err == 0 && flag != 6))
+	while (file[i] && (err == 0))
 	{
 		if (!(check_line(file[i])))
 		{
@@ -29,8 +29,8 @@ int	check_textr(char **file, t_data *game)
 				err = 1;
 			flag++;
 		}
-		else
-			printf("fodase\n");
+		else if (has_spaces(file[i]))
+			break ;
 		i++;
 	}
 	if (flag != 6 || err == 1)

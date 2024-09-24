@@ -1,9 +1,12 @@
+
+C 255,255,255
 NO 		./img/Black.xpm		
+F			100,100,253
 SO						./img/NO_OLIVES.xpm
 	WE 	 	./img/Purple.xpm
 EA ./img/Yellow.xpm
-F			100,100,253
-C			111,10,1
+
+
 
 11111111111111111111111
 100011111111111111111111

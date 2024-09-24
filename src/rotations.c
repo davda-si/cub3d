@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanta <phanta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:40:43 by phanta            #+#    #+#             */
-/*   Updated: 2024/09/22 17:22:06 by phanta           ###   ########.fr       */
+/*   Updated: 2024/09/24 15:52:06 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,3 @@ void	camera(void)
 	rotate((rot_factor * data()->rotspeed));
 	mlx_mouse_move(data()->mlx, data()->win, RESW / 2, RESH / 2);
 }
-
-//printf("mouse x before: %i, mouse y before: %i\n", mouse_x, mouse_y);
-//printf("rot:%f\n", rot_factor);
