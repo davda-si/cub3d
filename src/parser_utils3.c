@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:00:12 by davda-si          #+#    #+#             */
-/*   Updated: 2024/09/24 18:48:39 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:13:17 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	clear_file(int fd, char *file, t_data *game)
 	}
 	if (!game->textures[0].img || !game->textures[1].img
 		|| !game->textures[2].img
-		|| !game->textures[3].img || !game->map.fcolor || !game->map.ccolor)
+		|| !game->textures[3].img || game->map.fcolor == -1
+		|| game->map.ccolor == -1)
 	{
 		free_mtx(cpy_file);
 		error_handle(1, "textures missing\n", game);

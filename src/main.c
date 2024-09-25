@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:14:17 by david             #+#    #+#             */
-/*   Updated: 2024/09/24 18:08:56 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:16:23 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	main(int ac, char **av)
 	}
 	game = data();
 	game->mlx = mlx_init();
+	game->map.fcolor = -1;
+	game->map.ccolor = -1;
 	check_file(av[1], game);
 	start_game();
 	return (0);

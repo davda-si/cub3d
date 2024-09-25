@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 01:55:48 by david             #+#    #+#             */
-/*   Updated: 2024/09/24 18:48:52 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:07:36 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,11 @@ static void	how_big(int fd, t_data *game, char *fl)
 	int		i;
 
 	i = 0;
+	c = '\0';
 	fd = open(fl, O_RDONLY);
-	while (read(fd, &c, 1))
+	if (fd == -1)
+		error_handle(1, "empty file", game);
+	while (read(fd, &c, 1) > 0)
 	{
 		if (c == '\n')
 			i++;

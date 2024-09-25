@@ -6,7 +6,7 @@
 /*   By: davda-si <davda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:46:35 by guest             #+#    #+#             */
-/*   Updated: 2024/09/24 16:35:24 by davda-si         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:13:37 by davda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int	add_texture(char *file, t_data *game, char **map)
 			return (0);
 		else
 		{
-			if (!ft_strncmp(start, "F", 2) && !game->map.fcolor)
+			if (!ft_strncmp(start, "F", 2) && game->map.fcolor == -1)
 				return (color_info(file, &game->map, 1));
-			else if (!ft_strncmp(start, "C", 2) && !game->map.ccolor)
+			else if (!ft_strncmp(start, "C", 2) && game->map.ccolor == -1)
 				return (color_info(file, &game->map, 0));
 			else
 				return (-1);
