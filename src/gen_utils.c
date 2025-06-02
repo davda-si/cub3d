@@ -69,7 +69,7 @@ void	floor_ceiling(char **rgb, int fl, t_mapdata *map)
 	if (fl)
 		map->fcolor = (ft_atoi(rgb[0]) << 16)
 			+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
-	else 
+	else
 		map->ccolor = (ft_atoi(rgb[0]) << 16)
 			+ (ft_atoi(rgb[1]) << 8) + (ft_atoi(rgb[2]));
 }

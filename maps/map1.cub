@@ -1,10 +1,10 @@
 
 C  1,0,0
-NO 		./img/charizard.xpm		
+NO 		./img/jiggly.xpm		
 F			70,0,0
-SO					./img/mewtwo.xpm
-	WE 	 	./img/jiggly.xpm
-EA ./img/gengar.xpm
+SO					./img/gengar.xpm
+	WE 	 	./img/mewtwo.xpm
+EA ./img/charizard.xpm
 
 
 11111111111111111111111
